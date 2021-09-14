@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class ClickSound : MonoBehaviour
 {
-    public AudioSource myAudio;
-    public AudioClip clickAudio;
+    [SerializeField]
+    private AudioClip clickAudio;
 
     public void OnClick()
     {   
-        GetComponent<AudioSource>().PlayOneShot(clickAudio);
+        AudioManager.Instance.PlayEffect(clickAudio);
     }
 }
