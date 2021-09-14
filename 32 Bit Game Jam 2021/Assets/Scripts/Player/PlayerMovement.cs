@@ -55,6 +55,5 @@ public class PlayerMovement : MonoBehaviour
 
         // because of equation deltaY = 1/2g*t^2, we multiply by deltaTime again
         controller.Move(velocity * Time.deltaTime);
-
     }
 }
