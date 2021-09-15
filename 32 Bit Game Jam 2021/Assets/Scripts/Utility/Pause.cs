@@ -13,29 +13,31 @@ public class Pause : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown("p"))
+        if (Input.GetKeyDown("escape"))
         {
             Debug.Log("Escape key pressed");
             if (!pausePanel.activeInHierarchy)
             {
                 PauseGame();
             }
-            if (pausePanel.activeInHierarchy)
+            else if (pausePanel.activeInHierarchy)
             {
                 ContinueGame();
             }
         }
     }
 
-    private void PauseGame()
+    public void PauseGame()
     {
         Time.timeScale = 0;
+        Cursor.lockState = CursorLockMode.Confined;
         pausePanel.SetActive(true);
         //Disable scripts that still work while timescale is set to 0
     }
 
-    private void ContinueGame()
+    public void ContinueGame()
     {
+        Cursor.lockState = CursorLockMode.Locked;
         Time.timeScale = 1;
         pausePanel.SetActive(false);
         //enable the scripts again
