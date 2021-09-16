@@ -8,7 +8,7 @@ public class ArmCameraFollow : MonoBehaviour
     // but looking up and down doesn't. So, this script handles that part. 
 
     // Start is called before the first frame update
-    private float mouseSensitivity = 100f;
+    float xRotation;
     void Start()
     {
         
@@ -17,6 +17,9 @@ public class ArmCameraFollow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
+        float mouseY = Input.GetAxis("Mouse Y") * GameManager.Instance.MouseSensitivity * Time.deltaTime;
+        xRotation -= mouseY;
+        xRotation = Mathf.Clamp(xRotation, -90f, 90f);
+        transform.localRotation = Quaternion.Euler(xRotation, 0, 0);
     }
 }

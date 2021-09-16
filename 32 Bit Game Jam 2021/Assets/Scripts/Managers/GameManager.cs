@@ -5,19 +5,23 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
 
-    private static GameManager _instance;
+    private static GameManager instance;
 
-    public static GameManager Instance { get { return _instance; } }
+    public static GameManager Instance { get { return instance; } }
+
+
+    [field:SerializeField]
+    public float MouseSensitivity { get; set; }
 
     private void Awake()
     {
-        if (_instance != null && _instance != this)
+        if (instance != null && instance != this)
         {
             Destroy(this.gameObject);
         }
         else
         {
-            _instance = this;
+            instance = this;
         }
         DontDestroyOnLoad(gameObject);
     }
