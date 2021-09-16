@@ -10,9 +10,17 @@ public class Projectile : MonoBehaviour
     {
         if(collision.gameObject.tag != "Bullet" && collision.gameObject.tag != "Player" && !collided)
         {
+            //play hit something sound effect here
+
             collided = true;
             Destroy(gameObject);
         }
 
+    }
+
+
+    private void Start()
+    {
+        //play shoot sound effect here
     }
 }
