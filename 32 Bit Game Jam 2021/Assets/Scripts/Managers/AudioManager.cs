@@ -7,9 +7,9 @@ public class AudioManager : MonoBehaviour
     private static AudioManager _instance;
 
     public static AudioManager Instance { get { return _instance; } }
-    
-        
-    [SerializeField]  
+
+
+    [SerializeField]
     private AudioSource musicSource;
 
     [SerializeField]
@@ -30,7 +30,7 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-       // musicSource
+        // musicSource
     }
 
     public void PlayEffect(AudioClip clip)
@@ -44,5 +44,7 @@ public class AudioManager : MonoBehaviour
         musicSource.clip = clip;
         musicSource.Play();
     }
+
+    
 
 }

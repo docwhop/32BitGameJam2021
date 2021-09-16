@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.Audio;
 using UnityEngine;
 
 public class Pause : MonoBehaviour
 {
     [SerializeField] private GameObject pausePanel;
+    public AudioMixer masterMixer;
 
     void Start()
     {
@@ -32,6 +34,7 @@ public class Pause : MonoBehaviour
         Time.timeScale = 0;
         Cursor.lockState = CursorLockMode.Confined;
         pausePanel.SetActive(true);
+        masterMixer.SetFloat("musicCutoff", 1900);
         //Disable scripts that still work while timescale is set to 0
     }
 
@@ -40,6 +43,7 @@ public class Pause : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Time.timeScale = 1;
         pausePanel.SetActive(false);
+        masterMixer.SetFloat("musicCutoff", 22000);
         //enable the scripts again
     }
 }
