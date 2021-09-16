@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1049,7 +1049,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3431376385746913312, guid: bd4d410f31e3b6a47810965da6da742a, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3431376385746913312, guid: bd4d410f31e3b6a47810965da6da742a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1091,9 +1091,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3431376385746913313, guid: bd4d410f31e3b6a47810965da6da742a, type: 3}
+      propertyPath: LowPitchRange
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3431376385746913313, guid: bd4d410f31e3b6a47810965da6da742a, type: 3}
+      propertyPath: HighPitchRange
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3431376385746913313, guid: bd4d410f31e3b6a47810965da6da742a, type: 3}
+      propertyPath: LowVolumeRange
+      value: 0.8
+      objectReference: {fileID: 0}
     - target: {fileID: 3431376385746913340, guid: bd4d410f31e3b6a47810965da6da742a, type: 3}
       propertyPath: m_Name
       value: Audio Manager
+      objectReference: {fileID: 0}
+    - target: {fileID: 3431376385746913342, guid: bd4d410f31e3b6a47810965da6da742a, type: 3}
+      propertyPath: m_Volume
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bd4d410f31e3b6a47810965da6da742a, type: 3}

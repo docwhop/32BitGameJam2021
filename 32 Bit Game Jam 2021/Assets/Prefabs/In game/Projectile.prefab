@@ -5076,3 +5076,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd9f1429c4fe2fe479a516075e0e1b35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shootAudio: {fileID: 8300000, guid: 657a0f3aa73a0e549b1ed4e8ce2ae879, type: 3}

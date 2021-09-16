@@ -15,6 +15,14 @@ public class AudioManager : MonoBehaviour
     [SerializeField]
     private AudioSource effectsSource;
 
+    [SerializeField]
+    private AudioSource pitchSource;
+
+    public float LowPitchRange = .8f;
+    public float HighPitchRange = 1.2f;
+    public float LowVolumeRange = .8f;
+    public float HighVolumeRange = 1;
+
     private void Awake()
     {
         if (_instance != null && _instance != this)
@@ -45,6 +53,16 @@ public class AudioManager : MonoBehaviour
         musicSource.Play();
     }
 
-    
+    public void RandomSoundEffect(params AudioClip[] clips)
+    {
+        int randomIndex = Random.Range(0, clips.Length);
+        float randomPitch = Random.Range(LowPitchRange, HighPitchRange);
+        float randomVolume = Random.Range(LowVolumeRange, HighVolumeRange);
+
+        pitchSource.pitch = randomPitch;
+        pitchSource.volume = randomVolume;
+        pitchSource.clip = clips[randomIndex];
+        pitchSource.Play();
+    }
 
 }

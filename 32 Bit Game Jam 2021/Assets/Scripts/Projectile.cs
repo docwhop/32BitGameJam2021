@@ -6,6 +6,9 @@ public class Projectile : MonoBehaviour
 {
     private bool collided;
 
+    [SerializeField]
+    private AudioClip shootAudio;
+
     private void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.tag != "Bullet" && collision.gameObject.tag != "Player" && !collided)
@@ -22,5 +25,6 @@ public class Projectile : MonoBehaviour
     private void Start()
     {
         //play shoot sound effect here
+        AudioManager.Instance.RandomSoundEffect(shootAudio);
     }
 }
