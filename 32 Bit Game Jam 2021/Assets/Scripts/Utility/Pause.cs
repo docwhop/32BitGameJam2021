@@ -35,6 +35,7 @@ public class Pause : MonoBehaviour
         Cursor.lockState = CursorLockMode.Confined;
         pausePanel.SetActive(true);
         masterMixer.SetFloat("musicCutoff", 1900);
+        GameManager.Instance.IsGamePaused = true;
         //Disable scripts that still work while timescale is set to 0
     }
 
@@ -44,6 +45,8 @@ public class Pause : MonoBehaviour
         Time.timeScale = 1;
         pausePanel.SetActive(false);
         masterMixer.SetFloat("musicCutoff", 22000);
+        GameManager.Instance.IsGamePaused = false;
+
         //enable the scripts again
     }
 }

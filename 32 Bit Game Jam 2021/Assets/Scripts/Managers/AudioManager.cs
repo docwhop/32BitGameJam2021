@@ -53,15 +53,15 @@ public class AudioManager : MonoBehaviour
         musicSource.Play();
     }
 
-    public void RandomSoundEffect(params AudioClip[] clips)
+    public AudioSource RandomizePitchAndVolume(AudioSource inSource)
     {
-        int randomIndex = Random.Range(0, clips.Length);
         float randomPitch = Random.Range(LowPitchRange, HighPitchRange);
         float randomVolume = Random.Range(LowVolumeRange, HighVolumeRange);
 
-        pitchSource.pitch = randomPitch;
-        pitchSource.volume = randomVolume;
-        pitchSource.clip = clips[randomIndex];
-        pitchSource.Play();
+        inSource.pitch = randomPitch;
+        inSource.volume = randomVolume;
+
+        return inSource;
+        
     }
 }
