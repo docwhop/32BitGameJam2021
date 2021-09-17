@@ -38,7 +38,9 @@ public class WeaponHandler : MonoBehaviour
 				GetPrimary().Modifiers
 			);
 
-			audioSource.PlayOneShot(GetPrimary().FireAudio);
+            AudioManager.Instance.RandomizePitchAndVolume(audioSource);
+            audioSource.PlayOneShot(GetPrimary().FireAudio);
+            //AudioManager.Instance.RandomSoundEffect(GetPrimary().FireAudio);
 
 			fireTimer = 0;
 

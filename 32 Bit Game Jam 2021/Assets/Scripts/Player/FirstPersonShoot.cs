@@ -20,7 +20,7 @@ public class FirstPersonShoot : MonoBehaviour
 
 	void Update()
     {
-        if (Input.GetButton("Fire1"))
+        if (Input.GetButton("Fire1") && !GameManager.Instance.IsGamePaused)
         {
 			if(weaponHandler.FirePrimary(FirePoints[firePointIndex].position, ProjectileDirection()) == true)
 			{
