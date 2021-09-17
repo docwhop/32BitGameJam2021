@@ -4,27 +4,50 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    private bool collided;
+	Vector3 direction;
 
-    [SerializeField]
-    private AudioClip shootAudio;
+	float speed;
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if(collision.gameObject.tag != "Bullet" && collision.gameObject.tag != "Player" && !collided)
-        {
-            //play hit something sound effect here
+	float range; //Seconds
 
-            collided = true;
-            Destroy(gameObject);
-        }
+	int damage;
 
-    }
+	float ttl;
 
+	public void Initialize(Vector3 _position, Vector3 _direction, float _speed, float _range, int _damage)
+	{
+		transform.position = _position;
+		direction = _direction;
+		speed = _speed;
+		range = _range;
+		damage = _damage;
 
-    private void Start()
-    {
-        //play shoot sound effect here
-        AudioManager.Instance.RandomSoundEffect(shootAudio);
-    }
+		transform.forward = direction;
+
+		ttl = 0;
+	}
+
+	void Update()
+	{
+		ttl += Time.deltaTime;
+
+		if(ttl >= range)
+		{
+			ttl = 0;
+			gameObject.SetActive(false);
+		}
+
+		transform.position = transform.position + (direction * speed * Time.deltaTime);
+		transform.forward = direction;
+	}
+
+	private void OnCollisionEnter(Collision collision)
+	{
+		if(collision.gameObject.GetComponent<Health>())
+		{
+			collision.gameObject.GetComponent<Health>().Damage(damage);
+		}
+
+		gameObject.SetActive(false);
+	}
 }

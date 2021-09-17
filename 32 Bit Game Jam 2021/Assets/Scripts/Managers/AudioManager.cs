@@ -64,5 +64,4 @@ public class AudioManager : MonoBehaviour
         pitchSource.clip = clips[randomIndex];
         pitchSource.Play();
     }
-
 }

@@ -4,66 +4,47 @@ using UnityEngine;
 
 public class FirstPersonShoot : MonoBehaviour
 {
-    public Camera camera;
-    public GameObject projectile;
-    public Transform leftFirePoint, rightFirePoint;
+	Camera cam;
 
-    [SerializeField]
-    float projectileSpeed = 30f;
-    [SerializeField]
-    float fireRate = 4;
+	WeaponHandler weaponHandler;
 
+	public Transform[] FirePoints;
+	int firePointIndex;
 
-    private Vector3 destination;
-    private bool leftHand;
-    private float timeToFire;
-    // Start is called before the first frame update
-    void Start()
+	private void Awake()
+	{
+		cam = GetComponentInChildren<Camera>();
+
+		weaponHandler = GetComponent<WeaponHandler>();
+	}
+
+	void Update()
     {
-        
+        if (Input.GetButton("Fire1"))
+        {
+			if(weaponHandler.FirePrimary(FirePoints[firePointIndex].position, ProjectileDirection()) == true)
+			{
+				firePointIndex++;
+
+				if (firePointIndex >= FirePoints.Length)
+				{
+					firePointIndex = 0;
+				}
+			}
+		}
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetButton("Fire1") && Time.time >= timeToFire)
-        {
-            timeToFire = Time.time + 1 / fireRate;
-            ShootProjectile();
-        }
-    }
+	Vector3 ProjectileDirection()
+	{
+		Ray projectileRay = cam.ViewportPointToRay(new Vector3(.5f, .5f, 0f));
 
-    void ShootProjectile()
-    {
-        Ray ray = camera.ViewportPointToRay(new Vector3(.5f, .5f, 0f));
-        RaycastHit hit;
+		Vector3 destination = projectileRay.GetPoint(1000);
 
-        if(Physics.Raycast(ray, out hit))
-        {
-            destination = hit.point;
-        }
-        else
-        {
-            destination = ray.GetPoint(1000);
-        }
+		if (Physics.Raycast(projectileRay, out RaycastHit projectileHitInfo))
+		{
+			destination = projectileHitInfo.point;
+		}
 
-        if (leftHand)
-        {
-            InstantiateProjectile(leftFirePoint);
-            leftHand = false;
-        }
-        else
-        {
-            InstantiateProjectile(rightFirePoint);
-            leftHand = true;
-        }
-    }
-
-    void InstantiateProjectile(Transform firePoint)
-    {
-        var projectileObj = Instantiate(projectile, firePoint.position, Quaternion.identity) as GameObject;
-        projectileObj.GetComponent<Rigidbody>().velocity = (destination - firePoint.position).normalized * projectileSpeed;
-    }
-
-
+		return (destination - FirePoints[firePointIndex].position).normalized;
+	}
 }
