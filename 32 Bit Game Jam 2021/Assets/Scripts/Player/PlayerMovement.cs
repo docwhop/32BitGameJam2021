@@ -17,11 +17,11 @@ public class PlayerMovement : MonoBehaviour
     private float jumpHeight = 3f;
 
     CharacterController controller;
-    Vector3 velocity;
-    bool isGrounded;
+
+	Vector3 velocity;
+
+	bool isGrounded;
     
-
-
     // Start is called before the first frame update
     void Start()
     {
@@ -51,9 +51,15 @@ public class PlayerMovement : MonoBehaviour
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
+
         velocity.y += gravity * Time.deltaTime;
 
-        // because of equation deltaY = 1/2g*t^2, we multiply by deltaTime again
-        controller.Move(velocity * Time.deltaTime);
-    }
+		// because of equation deltaY = 1/2g*t^2, we multiply by deltaTime again
+		controller.Move(velocity * Time.deltaTime);
+	}
+
+	public void AddForce(Vector3 _force)
+	{
+		velocity += _force;
+	}
 }
