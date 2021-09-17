@@ -17,3 +17,5 @@ MonoBehaviour:
   Speed: 25
   Range: 1
   Damage: 1
+  Modifiers:
+  - {fileID: 11400000, guid: 7d0631c55f18e644aaf3c7780b1288f3, type: 2}

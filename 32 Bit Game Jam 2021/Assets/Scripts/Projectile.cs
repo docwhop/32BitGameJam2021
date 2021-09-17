@@ -12,15 +12,24 @@ public class Projectile : MonoBehaviour
 
 	int damage;
 
+	ProjectileModifier[] modifiers;
+
 	float ttl;
 
-	public void Initialize(Vector3 _position, Vector3 _direction, float _speed, float _range, int _damage)
+	public void Initialize(Vector3 _position, Vector3 _direction, float _speed, float _range, int _damage, ProjectileModifier[] _modifiers)
 	{
 		transform.position = _position;
 		direction = _direction;
 		speed = _speed;
 		range = _range;
 		damage = _damage;
+
+		modifiers = _modifiers;
+
+		for (int i = 0; i < modifiers.Length; i++)
+		{
+			modifiers[i].Initialize(this);
+		}
 
 		transform.forward = direction;
 
@@ -39,6 +48,11 @@ public class Projectile : MonoBehaviour
 
 		transform.position = transform.position + (direction * speed * Time.deltaTime);
 		transform.forward = direction;
+
+		for (int i = 0; i < modifiers.Length; i++)
+		{
+			modifiers[i].Update();
+		}
 	}
 
 	private void OnCollisionEnter(Collision collision)
@@ -46,6 +60,11 @@ public class Projectile : MonoBehaviour
 		if(collision.gameObject.GetComponent<Health>())
 		{
 			collision.gameObject.GetComponent<Health>().Damage(damage);
+		}
+
+		for (int i = 0; i < modifiers.Length; i++)
+		{
+			modifiers[i].OnHit();
 		}
 
 		gameObject.SetActive(false);

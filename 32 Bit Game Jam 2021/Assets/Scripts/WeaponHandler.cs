@@ -34,7 +34,8 @@ public class WeaponHandler : MonoBehaviour
 				_direction,
 				GetPrimary().Speed,
 				GetPrimary().Range,
-				GetPrimary().Damage
+				GetPrimary().Damage,
+				GetPrimary().Modifiers
 			);
 
 			audioSource.PlayOneShot(GetPrimary().FireAudio);
