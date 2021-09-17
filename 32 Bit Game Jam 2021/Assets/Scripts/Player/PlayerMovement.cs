@@ -15,16 +15,21 @@ public class PlayerMovement : MonoBehaviour
     private float gravity = -9.81f;
     [SerializeField]
     private float jumpHeight = 3f;
+    [SerializeField]
+    private float hoverTime = 2f;
 
     CharacterController controller;
 
 	Vector3 velocity;
-
+    float timeHovering;
+    bool canHover;
 	bool isGrounded;
     
     // Start is called before the first frame update
     void Start()
     {
+        canHover = true;
+        timeHovering = 0f;
         controller = GetComponent<CharacterController>();
     }
 
@@ -47,9 +52,26 @@ public class PlayerMovement : MonoBehaviour
             controller.Move(move * speed * Time.deltaTime);
         }
 
-        if((Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.Backspace)) && isGrounded)
+        if(Input.GetButton("Jump") || Input.GetKey(KeyCode.Backspace))
         {
-            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            if (isGrounded)
+            {
+                velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+                canHover = true;
+            }
+            //double jump bee hover 
+            else if(timeHovering < hoverTime && canHover) 
+            {
+                timeHovering += Time.deltaTime;
+                velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+
+            }
+            // finished with hover
+            else
+            {
+                canHover = false;
+                timeHovering = 0f;
+            }
         }
 
         velocity.y += gravity * Time.deltaTime;
