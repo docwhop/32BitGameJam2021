@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5015937424546752643}
   - component: {fileID: 5445713264067800440}
   - component: {fileID: 8896572264833817184}
-  - component: {fileID: 2761783812319697741}
+  - component: {fileID: 683866541338419295}
   m_Layer: 0
   m_Name: Goo
   m_TagString: Untagged
@@ -113,7 +113,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &2761783812319697741
+--- !u!114 &683866541338419295
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -122,6 +122,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8118185253788440557}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4987da8e1a5bb12458883c9666b80c8c, type: 3}
+  m_Script: {fileID: 11500000, guid: 10d5530aef43d294fbcfc1db6ced663e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bounceForce: 35
