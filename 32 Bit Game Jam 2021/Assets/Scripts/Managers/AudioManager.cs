@@ -16,7 +16,7 @@ public class AudioManager : MonoBehaviour
     private AudioSource effectsSource;
 
     [SerializeField]
-    private AudioSource pitchSource;
+    private AudioSource randomSource;
 
     public float LowPitchRange = .8f;
     public float HighPitchRange = 1.2f;
@@ -62,6 +62,20 @@ public class AudioManager : MonoBehaviour
         inSource.volume = randomVolume;
 
         return inSource;
-        
+
     }
+
+    public void RandomSoundEffect(params AudioClip[] clips)
+    {
+        int randomIndex = Random.Range(0, clips.Length);
+
+        randomSource.clip = clips[randomIndex];
+        randomSource.Play();
+    }
+
+    public void StopRandomSource(params AudioClip[] clips)
+    {
+        randomSource.Stop();
+    }
+        
 }

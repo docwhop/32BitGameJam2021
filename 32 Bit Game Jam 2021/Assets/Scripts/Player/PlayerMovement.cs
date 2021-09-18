@@ -20,9 +20,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private AudioSource hoverSource;
     [SerializeField]
-    private AudioClip hoverClip;
+    private AudioClip[] hoverClips;
     public bool alreadyPlayed = false;
-    private float fadeTime = .5f;
+    private float fadeTime = 1f;
 
     CharacterController controller;
 
@@ -30,7 +30,15 @@ public class PlayerMovement : MonoBehaviour
     float timeHovering;
     bool canHover;
 	bool isGrounded;
-    
+
+    public void HoverSound(params AudioClip[] clips)
+    {
+        int randomIndex = Random.Range(0, clips.Length);
+
+        hoverSource.clip = clips[randomIndex];
+        hoverSource.Play();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -77,8 +85,7 @@ public class PlayerMovement : MonoBehaviour
                 if (!alreadyPlayed)
                 {
                     StartCoroutine(AudioHelper.FadeIn(hoverSource, fadeTime));
-
-                    hoverSource.Play();
+                    HoverSound(hoverClips);
                     alreadyPlayed = true;
 
                 }
