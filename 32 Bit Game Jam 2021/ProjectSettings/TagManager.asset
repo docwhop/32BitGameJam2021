@@ -6,6 +6,7 @@ TagManager:
   tags:
   - UIMainMenu
   - Bullet
+  - Key
   layers:
   - Default
   - TransparentFX

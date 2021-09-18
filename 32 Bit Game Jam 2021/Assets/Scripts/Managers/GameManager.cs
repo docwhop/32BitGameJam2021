@@ -13,8 +13,10 @@ public class GameManager : MonoBehaviour
     [field:SerializeField]
     public float MouseSensitivity { get; set; }
 
-    
     public bool IsGamePaused { get; set; }
+
+    public int KeyCount { get; set; }
+
 
     private void Awake()
     {

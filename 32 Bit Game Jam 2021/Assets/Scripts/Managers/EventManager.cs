@@ -5,6 +5,9 @@ using UnityEngine;
 public class EventManager : MonoBehaviour
 {
 
+    public delegate void OnKeyPickupDelegate();
+    public static event OnKeyPickupDelegate keyPickupEvent;
+
     private static EventManager _instance;
 
     public static EventManager Instance { get { return _instance; } }
@@ -22,15 +25,9 @@ public class EventManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+    public void KeyPickedUp()
     {
-        
+        keyPickupEvent?.Invoke();
     }
 }
