@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: BeeData
   m_EditorClassIdentifier: 
   HP: 3
-  acceleration: 25
+  acceleration: 35
   maxSpeed: 100
   Weapon: {fileID: 0}
