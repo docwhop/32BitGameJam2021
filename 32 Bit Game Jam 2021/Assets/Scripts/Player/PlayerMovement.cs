@@ -17,6 +17,12 @@ public class PlayerMovement : MonoBehaviour
     private float jumpHeight = 3f;
     [SerializeField]
     private float hoverTime = 2f;
+    [SerializeField]
+    private AudioSource hoverSource;
+    [SerializeField]
+    private AudioClip hoverClip;
+    public bool alreadyPlayed = false;
+    private float fadeTime = .5f;
 
     CharacterController controller;
 
@@ -33,6 +39,7 @@ public class PlayerMovement : MonoBehaviour
         controller = GetComponent<CharacterController>();
     }
 
+
     // Update is called once per frame
     void Update()
     {
@@ -40,6 +47,8 @@ public class PlayerMovement : MonoBehaviour
         if(isGrounded && velocity.y < 0)
         {
             velocity.y = -2f;
+            hoverSource.Stop();
+            alreadyPlayed = false;
         }
 
         float x = Input.GetAxis("Horizontal");
@@ -58,13 +67,21 @@ public class PlayerMovement : MonoBehaviour
             {
                 velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
                 canHover = true;
+                hoverSource.Stop();
             }
             //double jump bee hover 
             else if(timeHovering < hoverTime && canHover) 
             {
                 timeHovering += Time.deltaTime;
                 velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+                if (!alreadyPlayed)
+                {
+                    StartCoroutine(AudioHelper.FadeIn(hoverSource, fadeTime));
 
+                    hoverSource.Play();
+                    alreadyPlayed = true;
+
+                }
             }
             // finished with hover
             else
