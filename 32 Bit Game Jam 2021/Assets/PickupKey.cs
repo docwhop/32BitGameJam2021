@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class PickupKey : MonoBehaviour
 {
+    [SerializeField]
+    private AudioSource source;
+    [SerializeField]
+    private AudioClip clip;
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
         if(hit.gameObject.tag == "Key")
@@ -11,6 +15,7 @@ public class PickupKey : MonoBehaviour
             Debug.Log("Hit a key");
             GameManager.Instance.KeyCount++;
             EventManager.Instance.KeyPickedUp();
+            source.PlayOneShot(clip);
             Destroy(hit.gameObject);
         }
     }
