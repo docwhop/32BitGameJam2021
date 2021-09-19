@@ -9,6 +9,6 @@ public class ClickSound : MonoBehaviour
 
     public void OnClick()
     {   
-        AudioManager.Instance.PlayEffect(clickAudio);
+        AudioManager.Instance.PlayUi(clickAudio);
     }
 }

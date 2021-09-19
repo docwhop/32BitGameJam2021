@@ -17,4 +17,9 @@ public class MixLvl : MonoBehaviour
         masterMixer.SetFloat("musicVol", Mathf.Log10 (musicLvl) *20);
     }
 
+    public void SetUiVol (float uiVol)
+    {
+        masterMixer.SetFloat("uiVol", Mathf.Log10(uiVol) * 20);
+    }
+
 }
