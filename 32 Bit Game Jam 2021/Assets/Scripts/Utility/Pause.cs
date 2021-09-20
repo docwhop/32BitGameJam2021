@@ -24,6 +24,7 @@ public class Pause : MonoBehaviour
             }
             else if (pausePanel.activeInHierarchy)
             {
+                Cursor.lockState = CursorLockMode.Locked;
                 ContinueGame();
             }
         }
@@ -42,7 +43,6 @@ public class Pause : MonoBehaviour
 
     public void ContinueGame()
     {
-        Cursor.lockState = CursorLockMode.Locked;
         Time.timeScale = 1;
         pausePanel.SetActive(false);
         masterMixer.SetFloat("musicCutoff", 22000);
@@ -50,5 +50,12 @@ public class Pause : MonoBehaviour
         GameManager.Instance.IsGamePaused = false;
 
         //enable the scripts again
+    }
+
+    public void PauseMenuToMainMenu()
+    {
+
+
+       
     }
 }
