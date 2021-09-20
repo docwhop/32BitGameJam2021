@@ -2,9 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu]
+public enum WeaponType
+{
+	Projectile,
+	Raycast,
+	Melee
+}
+
 public class Weapon : ScriptableObject
 {
+	public WeaponType Type;
+
 	public AudioClip FireAudio;
 
 	public float FireRate;
@@ -15,5 +23,7 @@ public class Weapon : ScriptableObject
 
 	public int Damage;
 
-	public ProjectileModifier[] Modifiers;
+	public Bounds MeleeBounds;
+
+	public WeaponModifier[] Modifiers;
 }

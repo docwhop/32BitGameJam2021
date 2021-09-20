@@ -28,19 +28,53 @@ public class WeaponHandler : MonoBehaviour
 	{
 		if(fireTimer >= GetPrimary().FireRate)
 		{
-			ProjectileManager.Instance.SpawnProjectile
-			(
-				_weaponEnd,
-				_direction,
-				GetPrimary().Speed,
-				GetPrimary().Range,
-				GetPrimary().Damage,
-				GetPrimary().Modifiers
-			);
+			switch(GetPrimary().Type)
+			{
+				case WeaponType.Projectile:
+					ProjectileManager.Instance.SpawnProjectile
+					(
+						_weaponEnd,
+						_direction,
+						GetPrimary().Speed,
+						GetPrimary().Range,
+						GetPrimary().Damage,
+						GetPrimary().Modifiers
+					);
+					break;
+				case WeaponType.Raycast:
+					if(Physics.Raycast(_weaponEnd, _direction, out RaycastHit hitInfo, GetPrimary().Range))
+					{
+						if(hitInfo.collider.TryGetComponent(out Health hitHealth) == true)
+						{
+							hitHealth.Damage(GetPrimary().Damage);
+
+							for (int i = 0; i < GetPrimary().Modifiers.Length; i++)
+							{
+								GetPrimary().Modifiers[i].OnHit(hitInfo.point);
+							}
+						}
+					}
+					break;
+				case WeaponType.Melee: //Melee needs testing (could setup wireframe gizmo)
+					Collider[] hitCols = Physics.OverlapBox(_weaponEnd, (Vector3.one * 2) + transform.forward, Quaternion.identity);
+
+					for (int i = 0; i < hitCols.Length; i++)
+					{
+						if (hitCols[i].TryGetComponent(out Health hitHealth) == true)
+						{
+							hitHealth.Damage(GetPrimary().Damage);
+
+							for (int m = 0; m < GetPrimary().Modifiers.Length; m++)
+							{
+								GetPrimary().Modifiers[i].OnHit(hitCols[i].transform.position);
+							}
+						}
+					}
+					break;
+			}
 
             AudioManager.Instance.RandomizePitchAndVolume(audioSource);
             audioSource.PlayOneShot(GetPrimary().FireAudio);
-            //AudioManager.Instance.RandomSoundEffect(GetPrimary().FireAudio);
 
 			fireTimer = 0;
 

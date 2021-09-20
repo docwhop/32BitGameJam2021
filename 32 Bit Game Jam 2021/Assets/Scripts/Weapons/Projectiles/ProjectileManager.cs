@@ -32,7 +32,7 @@ public class ProjectileManager : MonoBehaviour
 		}
 	}
 
-	public void SpawnProjectile(Vector3 _position, Vector3 _direction, float _speed, float _range, int _damage, ProjectileModifier[] _modifiers)
+	public void SpawnProjectile(Vector3 _position, Vector3 _direction, float _speed, float _range, int _damage, WeaponModifier[] _modifiers)
 	{
 		for (int i = 0; i < pool.Length; i++)
 		{

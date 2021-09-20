@@ -8,6 +8,8 @@ public class Actor : MonoBehaviour
 
 	[HideInInspector] public Rigidbody Rbody;
 
+	[HideInInspector] public WeaponHandler WeaponHandler;
+
 	public ActorData Data;
 
 	public ActorController Controller;
@@ -17,6 +19,8 @@ public class Actor : MonoBehaviour
 		Health = GetComponent<Health>();
 
 		Rbody = GetComponent<Rigidbody>();
+
+		WeaponHandler = GetComponent<WeaponHandler>();
 
 		Health.AddDamageCallback(OnDamage);
 		Health.AddDeathCallback(OnDeath);

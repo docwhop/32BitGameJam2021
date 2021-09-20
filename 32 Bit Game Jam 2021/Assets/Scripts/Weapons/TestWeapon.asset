@@ -12,10 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f875fefbe0a463644951b55012ae78d5, type: 3}
   m_Name: TestWeapon
   m_EditorClassIdentifier: 
+  Type: 0
   FireAudio: {fileID: 8300000, guid: 657a0f3aa73a0e549b1ed4e8ce2ae879, type: 3}
-  FireRate: 0.25
+  FireRate: 1
   Speed: 25
   Range: 1
   Damage: 1
-  Modifiers:
-  - {fileID: 11400000, guid: 7d0631c55f18e644aaf3c7780b1288f3, type: 2}
+  MeleeBounds:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
+  Modifiers: []

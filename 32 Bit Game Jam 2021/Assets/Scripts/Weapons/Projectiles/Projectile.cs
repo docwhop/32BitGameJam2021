@@ -12,11 +12,11 @@ public class Projectile : MonoBehaviour
 
 	int damage;
 
-	ProjectileModifier[] modifiers;
+	WeaponModifier[] modifiers;
 
 	float ttl;
 
-	public void Initialize(Vector3 _position, Vector3 _direction, float _speed, float _range, int _damage, ProjectileModifier[] _modifiers)
+	public void Initialize(Vector3 _position, Vector3 _direction, float _speed, float _range, int _damage, WeaponModifier[] _modifiers)
 	{
 		transform.position = _position;
 		direction = _direction;
@@ -28,7 +28,7 @@ public class Projectile : MonoBehaviour
 
 		for (int i = 0; i < modifiers.Length; i++)
 		{
-			modifiers[i].Initialize(this);
+			modifiers[i].Initialize();
 		}
 
 		transform.forward = direction;
@@ -64,7 +64,7 @@ public class Projectile : MonoBehaviour
 
 		for (int i = 0; i < modifiers.Length; i++)
 		{
-			modifiers[i].OnHit();
+			modifiers[i].OnHit(transform.position);
 		}
 
 		gameObject.SetActive(false);

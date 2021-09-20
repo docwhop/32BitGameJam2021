@@ -18,6 +18,11 @@ public class BeeController : ActorController
 
 	public override void FixedUpdate()
 	{
+		if (AttachedActor.WeaponHandler.FirePrimary(AttachedActor.transform.position, PlayerDirection()) == true)
+		{
+			//Shot projectile
+		}
+
 		if (Vector3.Distance(target, AttachedActor.transform.position) <= 1)
 		{
 			NewTarget();
