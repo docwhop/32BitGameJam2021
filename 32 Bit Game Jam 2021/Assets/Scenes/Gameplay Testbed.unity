@@ -567,7 +567,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba0299abd8f660d429d9892202ef87be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clickAudio: {fileID: 8300000, guid: a84abab35b86df24ba2ab68dabcc668d, type: 3}
+  clickAudio: {fileID: 8300000, guid: 7d5fe9cf17c1c464f8aaeeb45b3e6ba9, type: 3}
 --- !u!4 &258408627
 Transform:
   m_ObjectHideFlags: 0

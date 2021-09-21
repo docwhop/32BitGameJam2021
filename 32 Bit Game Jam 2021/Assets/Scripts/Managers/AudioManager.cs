@@ -21,7 +21,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField]
     private AudioSource uiSource;
 
-    public float LowPitchRange = .8f;
+    public float LowPitchRange = 1f;
     public float HighPitchRange = 1.2f;
     public float LowVolumeRange = .8f;
     public float HighVolumeRange = 1;
@@ -58,6 +58,9 @@ public class AudioManager : MonoBehaviour
 
     public void PlayUi(AudioClip clip)
     {
+        float randomPitch = Random.Range(LowPitchRange, HighPitchRange);
+
+        uiSource.pitch = randomPitch;
         uiSource.clip = clip;
         uiSource.Play();
     }
