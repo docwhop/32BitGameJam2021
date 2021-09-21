@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu]
-public class BeeController : ActorController
+[CreateAssetMenu(fileName = "NewMeleeBeeController", menuName = "Actor controllers/Melee bee controller")]
+public class MeleeBeeController : ActorController
 {
 	Vector3 target;
 
 	Vector3 direction;
+
+	public float AttackRange;
+	public float ChargeRange;
 
 	public override void Initialize(Actor _attachedActor)
 	{
@@ -18,14 +21,25 @@ public class BeeController : ActorController
 
 	public override void FixedUpdate()
 	{
-		if (AttachedActor.WeaponHandler.FirePrimary(AttachedActor.transform.position, PlayerDirection()) == true)
+		if (Vector3.Distance(AttachedActor.transform.position, Player.transform.position) <= AttackRange)
 		{
-			//Shot projectile
-		}
+			direction = Vector3.zero;
 
-		if (Vector3.Distance(target, AttachedActor.transform.position) <= 1)
+			if (AttachedActor.WeaponHandler.FirePrimary(AttachedActor.transform.position, PlayerDirection()) == true)
+			{
+				//Melee attack
+			}
+		}
+		else if(Vector3.Distance(AttachedActor.transform.position, Player.transform.position) <= ChargeRange)
 		{
-			NewTarget();
+			direction = PlayerDirection();
+		}
+		else
+		{
+			if (Vector3.Distance(target, AttachedActor.transform.position) <= 1)
+			{
+				NewTarget();
+			}
 		}
 
 		if (direction != Vector3.zero) //Stops unnecessary movement
@@ -48,8 +62,8 @@ public class BeeController : ActorController
 
 		target += Vector3.up * Random.Range(yMin, yMax);
 
-		int xMin = 10;
-		int xMax = 20;
+		int xMin = 30;
+		int xMax = 40;
 
 		if (Random.Range(0, 2) == 0)
 		{

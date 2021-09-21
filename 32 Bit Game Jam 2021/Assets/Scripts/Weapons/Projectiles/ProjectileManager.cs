@@ -32,13 +32,13 @@ public class ProjectileManager : MonoBehaviour
 		}
 	}
 
-	public void SpawnProjectile(Vector3 _position, Vector3 _direction, float _speed, float _range, int _damage, WeaponModifier[] _modifiers)
+	public void SpawnProjectile(Vector3 _position, Vector3 _direction, float _speed, float _range, int _damage)
 	{
 		for (int i = 0; i < pool.Length; i++)
 		{
 			if(pool[i].gameObject.activeSelf == false)
 			{
-				pool[i].Initialize(_position, _direction, _speed, _range, _damage, _modifiers);
+				pool[i].Initialize(_position, _direction, _speed, _range, _damage);
 				pool[i].gameObject.SetActive(true);
 
 				break;

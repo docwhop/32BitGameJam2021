@@ -13,6 +13,4 @@ public class ActorData : ScriptableObject
 
 	[SerializeField] private float maxSpeed;
 	public float MaxSpeed { get { return maxSpeed * 0.01f; } }
-
-	public Weapon Weapon;
 }

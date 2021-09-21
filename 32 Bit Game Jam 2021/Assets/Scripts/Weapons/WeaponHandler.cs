@@ -28,49 +28,38 @@ public class WeaponHandler : MonoBehaviour
 	{
 		if(fireTimer >= GetPrimary().FireRate)
 		{
-			switch(GetPrimary().Type)
+			if(GetPrimary().GetType() == typeof(ProjectileWeapon))
 			{
-				case WeaponType.Projectile:
-					ProjectileManager.Instance.SpawnProjectile
-					(
-						_weaponEnd,
-						_direction,
-						GetPrimary().Speed,
-						GetPrimary().Range,
-						GetPrimary().Damage,
-						GetPrimary().Modifiers
-					);
-					break;
-				case WeaponType.Raycast:
-					if(Physics.Raycast(_weaponEnd, _direction, out RaycastHit hitInfo, GetPrimary().Range))
+				ProjectileManager.Instance.SpawnProjectile
+				(
+					_weaponEnd,
+					_direction,
+					ParseProjectile(GetPrimary()).Speed,
+					GetPrimary().Range,
+					GetPrimary().Damage
+				);
+			}
+			else if(GetPrimary().GetType() == typeof(RaycastWeapon))
+			{
+				if (Physics.Raycast(_weaponEnd, _direction, out RaycastHit hitInfo, GetPrimary().Range))
+				{
+					if (hitInfo.collider.TryGetComponent(out Health hitHealth) == true)
 					{
-						if(hitInfo.collider.TryGetComponent(out Health hitHealth) == true)
-						{
-							hitHealth.Damage(GetPrimary().Damage);
-
-							for (int i = 0; i < GetPrimary().Modifiers.Length; i++)
-							{
-								GetPrimary().Modifiers[i].OnHit(hitInfo.point);
-							}
-						}
+						hitHealth.Damage(GetPrimary().Damage);
 					}
-					break;
-				case WeaponType.Melee: //Melee needs testing (could setup wireframe gizmo)
-					Collider[] hitCols = Physics.OverlapBox(_weaponEnd, (Vector3.one * 2) + transform.forward, Quaternion.identity);
+				}
+			}
+			else if(GetPrimary().GetType() == typeof(MeleeWeapon))
+			{
+				Collider[] hitCols = Physics.OverlapBox(_weaponEnd + (_direction * GetPrimary().Range), ParseMelee(GetPrimary()).Size, Quaternion.identity);
 
-					for (int i = 0; i < hitCols.Length; i++)
+				for (int i = 0; i < hitCols.Length; i++)
+				{
+					if (hitCols[i].TryGetComponent(out Health hitHealth) == true)
 					{
-						if (hitCols[i].TryGetComponent(out Health hitHealth) == true)
-						{
-							hitHealth.Damage(GetPrimary().Damage);
-
-							for (int m = 0; m < GetPrimary().Modifiers.Length; m++)
-							{
-								GetPrimary().Modifiers[i].OnHit(hitCols[i].transform.position);
-							}
-						}
+						hitHealth.Damage(GetPrimary().Damage);
 					}
-					break;
+				}
 			}
 
             AudioManager.Instance.RandomizePitchAndVolume(audioSource);
@@ -111,5 +100,20 @@ public class WeaponHandler : MonoBehaviour
 		}
 
 		fireTimer = 0;
+	}
+
+	ProjectileWeapon ParseProjectile(Weapon _weapon)
+	{
+		return (ProjectileWeapon)_weapon;
+	}
+
+	RaycastWeapon ParseRaycast(Weapon _weapon)
+	{
+		return (RaycastWeapon)_weapon;
+	}
+
+	MeleeWeapon ParseMelee(Weapon _weapon)
+	{
+		return (MeleeWeapon)_weapon;
 	}
 }

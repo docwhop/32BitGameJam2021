@@ -9,11 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d55fc21ad4e21e40af2e1cdc35065f5, type: 3}
-  m_Name: SpawnModifier
+  m_Script: {fileID: 11500000, guid: 69c8c6f13e66e1d42a2262a4f7911fda, type: 3}
+  m_Name: NewRaycastWeapon
   m_EditorClassIdentifier: 
-  Object: {fileID: 8118185253788440557, guid: 75aaf037535caeb43b7b9cc094f2c401, type: 3}
-  spawnOnInitialize: 0
-  spawnOnTimer: 0
-  spawnRate: 0
-  SpawnOnHit: 1
+  FireAudio: {fileID: 0}
+  FireRate: 0
+  Range: 0
+  Damage: 0
