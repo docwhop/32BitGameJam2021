@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MouseLook : MonoBehaviour
 {
-    public Transform playerBody, playerArms;
+    public Transform playerBody;
     float xRotation;
     // Start is called before the first frame update
     void Start()
@@ -16,7 +16,6 @@ public class MouseLook : MonoBehaviour
     void Update()
     {
         MoveCamera();
-        MoveArms();
     }
 
     private void MoveCamera()
@@ -30,13 +29,6 @@ public class MouseLook : MonoBehaviour
         xRotation -= mouseY;
         xRotation = Mathf.Clamp(xRotation, -90f, 90f);
         transform.localRotation = Quaternion.Euler(xRotation, 0, 0);
-    }
-
-    private void MoveArms()
-    {
-
-
-
     }
 
 }

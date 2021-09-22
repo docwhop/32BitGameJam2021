@@ -8,6 +8,10 @@ public class EventManager : MonoBehaviour
     public delegate void OnKeyPickupDelegate();
     public static event OnKeyPickupDelegate keyPickupEvent;
 
+    public delegate void OnWeaponChangedDelegate();
+    public static event OnWeaponChangedDelegate weaponChangedEvent;
+
+
     private static EventManager _instance;
 
     public static EventManager Instance { get { return _instance; } }
@@ -30,4 +34,11 @@ public class EventManager : MonoBehaviour
     {
         keyPickupEvent?.Invoke();
     }
+
+    public void WeaponChanged()
+    {
+        weaponChangedEvent?.Invoke();
+    }
+
+
 }

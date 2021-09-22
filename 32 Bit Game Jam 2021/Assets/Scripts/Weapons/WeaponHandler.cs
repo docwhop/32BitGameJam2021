@@ -22,7 +22,33 @@ public class WeaponHandler : MonoBehaviour
 	void Update()
 	{
 		fireTimer += Time.deltaTime;
+        GetWeaponSwitchInput();
 	}
+
+    public void GetWeaponSwitchInput()
+    {
+        if (Input.GetAxis("Mouse ScrollWheel") > 0f)
+        {
+            NextWeapon();
+        }
+        if (Input.GetAxis("Mouse ScrollWheel") < 0f)
+        {
+            PreviousWeapon();
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            SelectWeapon(0);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            SelectWeapon(1);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            SelectWeapon(2);
+        }
+
+    }
 
 	public bool FirePrimary(Vector3 _weaponEnd, Vector3 _direction)
 	{
@@ -88,7 +114,8 @@ public class WeaponHandler : MonoBehaviour
 		}
 
 		fireTimer = 0;
-	}
+        EventManager.Instance.WeaponChanged();
+    }
 
 	public void NextWeapon()
 	{
@@ -100,7 +127,23 @@ public class WeaponHandler : MonoBehaviour
 		}
 
 		fireTimer = 0;
-	}
+        EventManager.Instance.WeaponChanged();
+    }
+
+    public void PreviousWeapon()
+    {
+        if(selectedIndex == 0)
+        {
+            selectedIndex = Weapons.Length - 1;  
+        }
+        else
+        {
+            selectedIndex--;
+        }
+
+        fireTimer = 0;
+        EventManager.Instance.WeaponChanged();
+    }
 
 	ProjectileWeapon ParseProjectile(Weapon _weapon)
 	{
