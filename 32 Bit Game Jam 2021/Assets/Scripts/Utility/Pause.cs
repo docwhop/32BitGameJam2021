@@ -6,6 +6,7 @@ using UnityEngine;
 public class Pause : MonoBehaviour
 {
     [SerializeField] private GameObject pausePanel;
+    [SerializeField] private GameObject optionsPanel;
     public AudioMixer masterMixer;
 
     void Start()
@@ -18,13 +19,18 @@ public class Pause : MonoBehaviour
         if (Input.GetKeyDown("escape"))
         {
             Debug.Log("Escape key pressed");
-            if (!pausePanel.activeInHierarchy)
+            if (!GameManager.Instance.IsGamePaused)
             {
                 PauseGame();
             }
-            else if (pausePanel.activeInHierarchy)
+            else if (GameManager.Instance.IsGamePaused)
             {
                 Cursor.lockState = CursorLockMode.Locked;
+                if (optionsPanel.activeInHierarchy)
+                {
+                    Debug.Log("optionspop");
+                    optionsPanel.SetActive(false);
+                }
                 ContinueGame();
             }
         }

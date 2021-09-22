@@ -1296,6 +1296,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pausePanel: {fileID: 381220646}
+  optionsPanel: {fileID: 1750673673}
   masterMixer: {fileID: 24100000, guid: 69fcc6d8dea68874da12f77b80b74370, type: 2}
 --- !u!1001 &1240957344
 PrefabInstance:
@@ -2166,6 +2167,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponRoation: {x: -156, y: -25, z: -30}
+--- !u!1 &1750673673 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3228337740668371786, guid: ea6ccca252bb6d34ea8b82817c4927c7, type: 3}
+  m_PrefabInstance: {fileID: 3793200941573868082}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1755946758
 GameObject:
   m_ObjectHideFlags: 0
