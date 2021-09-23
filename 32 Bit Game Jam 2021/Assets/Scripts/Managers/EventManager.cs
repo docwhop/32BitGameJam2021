@@ -11,6 +11,8 @@ public class EventManager : MonoBehaviour
     public delegate void OnWeaponChangedDelegate();
     public static event OnWeaponChangedDelegate weaponChangedEvent;
 
+    public delegate void OnWeaponReloadDelegate();
+    public static event OnWeaponReloadDelegate weaponReloadedEvent;
 
     private static EventManager _instance;
 
@@ -38,6 +40,11 @@ public class EventManager : MonoBehaviour
     public void WeaponChanged()
     {
         weaponChangedEvent?.Invoke();
+    }
+
+    public void WeaponReloaded()
+    {
+        weaponReloadedEvent?.Invoke();
     }
 
 

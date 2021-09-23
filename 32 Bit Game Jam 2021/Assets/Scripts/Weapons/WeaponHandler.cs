@@ -22,10 +22,10 @@ public class WeaponHandler : MonoBehaviour
 	void Update()
 	{
 		fireTimer += Time.deltaTime;
-        GetWeaponSwitchInput();
+        GetWeaponInput();
 	}
 
-    public void GetWeaponSwitchInput()
+    public void GetWeaponInput()
     {
         if (Input.GetAxis("Mouse ScrollWheel") > 0f)
         {
@@ -47,6 +47,17 @@ public class WeaponHandler : MonoBehaviour
         {
             SelectWeapon(2);
         }
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            Reload();
+            EventManager.Instance.WeaponReloaded();
+        }
+
+    }
+
+    public void Reload()
+    {
+
 
     }
 
