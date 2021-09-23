@@ -206,10 +206,10 @@ MonoBehaviour:
   hoverTime: 1
   hoverSource: {fileID: 1571906832}
   hoverClips:
-  - {fileID: 8300000, guid: 939cc883d7748d447b769455411e2382, type: 3}
-  - {fileID: 8300000, guid: c983404fce17458499d3f2479956e09b, type: 3}
-  - {fileID: 8300000, guid: 5c13c79a25ec57347bb30cb1a7cc5219, type: 3}
-  - {fileID: 8300000, guid: aeadb5f5b2ccb954996caf1da302aa8f, type: 3}
+  - {fileID: 8300000, guid: 1ae6c1cf638126b4d8c83d480b43121c, type: 3}
+  - {fileID: 8300000, guid: c8b61925fb72edc4ebb6ededfedbd323, type: 3}
+  - {fileID: 8300000, guid: 3422c5b8d8e3b3148b5deeb8a649a4b7, type: 3}
+  - {fileID: 8300000, guid: a91a0a0e64b6fbf4b891bb5be4c344ff, type: 3}
   alreadyPlayed: 0
 --- !u!114 &103180668
 MonoBehaviour:
