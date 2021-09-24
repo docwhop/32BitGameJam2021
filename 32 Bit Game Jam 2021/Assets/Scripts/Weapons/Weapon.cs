@@ -13,15 +13,17 @@ public enum WeaponName
 
 public class Weapon : ScriptableObject
 {
-    public WeaponName weaponName;    
+    public WeaponName WeaponName;
 
 	public AudioClip FireAudio;
 
 	public float FireRate;
 
+	public float Accuracy;
+
+	public int ProjectileCount;
+
 	public float Range;
 
 	public int Damage;
-
-
 }

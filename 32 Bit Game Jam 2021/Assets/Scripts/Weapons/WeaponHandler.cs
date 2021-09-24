@@ -22,44 +22,12 @@ public class WeaponHandler : MonoBehaviour
 	void Update()
 	{
 		fireTimer += Time.deltaTime;
-        GetWeaponInput();
 	}
-
-    public void GetWeaponInput()
-    {
-        if (Input.GetAxis("Mouse ScrollWheel") > 0f)
-        {
-            NextWeapon();
-        }
-        if (Input.GetAxis("Mouse ScrollWheel") < 0f)
-        {
-            PreviousWeapon();
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            SelectWeapon(0);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            SelectWeapon(1);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            SelectWeapon(2);
-        }
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            Reload();
-            EventManager.Instance.WeaponReloaded();
-        }
-
-    }
 
     public void Reload()
     {
-
-
-    }
+		EventManager.Instance.WeaponReloaded();
+	}
 
 	public bool FirePrimary(Vector3 _weaponEnd, Vector3 _direction)
 	{
@@ -67,22 +35,34 @@ public class WeaponHandler : MonoBehaviour
 		{
 			if(GetPrimary().GetType() == typeof(ProjectileWeapon))
 			{
-				ProjectileManager.Instance.SpawnProjectile
-				(
-					_weaponEnd,
-					_direction,
-					ParseProjectile(GetPrimary()).Speed,
-					GetPrimary().Range,
-					GetPrimary().Damage
-				);
+				for (int i = 0; i < GetPrimary().ProjectileCount; i++)
+				{
+					Vector3 accuracyRng = new Vector3(Random.Range(-GetPrimary().Accuracy, GetPrimary().Accuracy), Random.Range(-GetPrimary().Accuracy, GetPrimary().Accuracy), Random.Range(-GetPrimary().Accuracy, GetPrimary().Accuracy));
+					accuracyRng *= 0.01f;
+					
+					ProjectileManager.Instance.SpawnProjectile
+					(
+						_weaponEnd,
+						_direction + accuracyRng,
+						ParseProjectile(GetPrimary()).Speed,
+						GetPrimary().Range,
+						GetPrimary().Damage
+					);
+				}
 			}
 			else if(GetPrimary().GetType() == typeof(RaycastWeapon))
 			{
-				if (Physics.Raycast(_weaponEnd, _direction, out RaycastHit hitInfo, GetPrimary().Range))
+				for (int i = 0; i < GetPrimary().ProjectileCount; i++)
 				{
-					if (hitInfo.collider.TryGetComponent(out Health hitHealth) == true)
+					Vector3 accuracyRng = new Vector3(Random.Range(-GetPrimary().Accuracy, GetPrimary().Accuracy), Random.Range(-GetPrimary().Accuracy, GetPrimary().Accuracy), Random.Range(-GetPrimary().Accuracy, GetPrimary().Accuracy));
+					accuracyRng *= 0.01f;
+
+					if (Physics.Raycast(_weaponEnd, _direction + accuracyRng, out RaycastHit hitInfo, GetPrimary().Range))
 					{
-						hitHealth.Damage(GetPrimary().Damage);
+						if (hitInfo.collider.TryGetComponent(out Health hitHealth) == true)
+						{
+							hitHealth.Damage(GetPrimary().Damage);
+						}
 					}
 				}
 			}

@@ -11,13 +11,42 @@ public class WeaponSwitcher : MonoBehaviour
     [SerializeField]
     WeaponHandler weaponHandler;
 
+	void Update()
+	{
+		SwitchInput();
+	}
 
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
+	void SwitchInput()
+	{
+		if (Input.GetAxis("Mouse ScrollWheel") > 0f)
+		{
+			weaponHandler.NextWeapon();
+		}
+		if (Input.GetAxis("Mouse ScrollWheel") < 0f)
+		{
+			weaponHandler.PreviousWeapon();
+		}
+		if (Input.GetKeyDown(KeyCode.Alpha1))
+		{
+			weaponHandler.SelectWeapon(0);
+		}
+		if (Input.GetKeyDown(KeyCode.Alpha2))
+		{
+			weaponHandler.SelectWeapon(1);
+		}
+		if (Input.GetKeyDown(KeyCode.Alpha3))
+		{
+			weaponHandler.SelectWeapon(2);
+		}
+		if (Input.GetKeyDown(KeyCode.R))
+		{
+			weaponHandler.Reload();
+		}
 
-    private void OnEnable()
+		SwapWeaponModel();
+	}
+
+	private void OnEnable()
     {
         EventManager.weaponChangedEvent += SwapWeaponModel;
     }
@@ -28,7 +57,7 @@ public class WeaponSwitcher : MonoBehaviour
     
     public void SwapWeaponModel()
     {
-        switch (weaponHandler.GetPrimary().weaponName)
+        switch (weaponHandler.GetPrimary().WeaponName)
         {
             case WeaponName.NeedleGun:
             
@@ -55,7 +84,6 @@ public class WeaponSwitcher : MonoBehaviour
                 break;
             default:
                 break;
-        }
-       
+        }       
     }
 }
