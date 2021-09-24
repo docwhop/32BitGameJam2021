@@ -1987,7 +1987,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1455439dc22b56b4b960fe1ddbeee4e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 7990981834969099302, guid: 67e9058f671789f42a5b716e0854d642, type: 3}
+  needleProjPrefab: {fileID: 6168344879205481313, guid: 1e5810b44d5b652408004bb16c8c0db1, type: 3}
+  honeyLauncherProjPrefab: {fileID: 872226790677454867, guid: 128e04331b5622b43afec7cbb7fe126c, type: 3}
+  pollenatorProjPrefab: {fileID: 5553901750442495470, guid: e965c749b1829e84f994caa4fcc1ef22, type: 3}
   size: 100
 --- !u!4 &1440782581
 Transform:

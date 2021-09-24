@@ -46,7 +46,8 @@ public class WeaponHandler : MonoBehaviour
 						_direction + accuracyRng,
 						ParseProjectile(GetPrimary()).Speed,
 						GetPrimary().Range,
-						GetPrimary().Damage
+						GetPrimary().Damage, 
+                        GetPrimary().WeaponName
 					);
 				}
 			}
