@@ -40,7 +40,7 @@ public class ProjectileManager : MonoBehaviour
         }
     }
 
-	public void SpawnProjectile(Vector3 _position, Vector3 _direction, float _speed, float _range, int _damage, WeaponName _name)
+	public void SpawnProjectile(Vector3 _position, Vector3 _direction, float _speed, float _range, int _damage, WeaponName _name, Collider _ignore = null)
 	{
         switch (_name)
         {
@@ -50,8 +50,14 @@ public class ProjectileManager : MonoBehaviour
                     if (needlePool[i].gameObject.activeSelf == false)
                     {
                         needlePool[i].Initialize(_position, _direction, _speed, _range, _damage);
+
                         needlePool[i].gameObject.SetActive(true);
-                        break;
+
+						if (_ignore != null)
+						{
+							needlePool[i].IgnoreCollider(_ignore);
+						}
+						break;
                     }
                 }
                 break;
@@ -61,8 +67,14 @@ public class ProjectileManager : MonoBehaviour
                     if (honeyLauncherPool[i].gameObject.activeSelf == false)
                     {
                         honeyLauncherPool[i].Initialize(_position, _direction, _speed, _range, _damage);
-                        honeyLauncherPool[i].gameObject.SetActive(true);
-                        break;
+
+						honeyLauncherPool[i].gameObject.SetActive(true);
+
+						if (_ignore != null)
+						{
+							honeyLauncherPool[i].IgnoreCollider(_ignore);
+						}
+						break;
                     }
                 }
                 break;
@@ -72,8 +84,14 @@ public class ProjectileManager : MonoBehaviour
                     if (pollenatorPool[i].gameObject.activeSelf == false)
                     {
                         pollenatorPool[i].Initialize(_position, _direction, _speed, _range, _damage);
+
                         pollenatorPool[i].gameObject.SetActive(true);
-                        break;
+
+						if (_ignore != null)
+						{
+							pollenatorPool[i].IgnoreCollider(_ignore);
+						}
+						break;
                     }
                 }
                 break;

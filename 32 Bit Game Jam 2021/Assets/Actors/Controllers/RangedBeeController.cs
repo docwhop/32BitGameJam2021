@@ -11,37 +11,50 @@ public class RangedBeeController : ActorController
 
 	float timer;
 
+	Transform gunEnd;
+
 	public override void Initialize(Actor _attachedActor)
 	{
 		base.Initialize(_attachedActor);
 
 		NewTarget();
+
+		gunEnd = AttachedActor.transform.GetChild(0);
 	}
 
 	public override void FixedUpdate()
 	{
 		timer += Time.deltaTime;
 
-		if (AttachedActor.WeaponHandler.FirePrimary(AttachedActor.transform.position, PlayerDirection()) == true)
+		if(CanSeePlayer() == true)
 		{
-			//Shot projectile
+			if (AttachedActor.WeaponHandler.FirePrimary(gunEnd.position, PlayerDirection(), AttachedActor.Collider) == true)
+			{
+				//Shot projectile
+			}
+
+			if (Vector3.Distance(target, AttachedActor.transform.position) <= 1 || timer >= 2)
+			{
+				NewTarget();
+
+				timer = 0;
+			}
+
+			if (direction != Vector3.zero) //Stops unnecessary movement
+			{
+				AttachedActor.Rbody.MovePosition(AttachedActor.transform.position + (direction * AttachedActor.Data.Acceleration));
+			}
+
+			AttachedActor.transform.LookAt(Player);
+
+			if (AttachedActor.Rbody.velocity.magnitude > AttachedActor.Data.MaxSpeed) //Stops velocity going crazy
+			{
+				AttachedActor.Rbody.velocity = AttachedActor.Rbody.velocity.normalized * AttachedActor.Data.MaxSpeed;
+			}
 		}
-
-		if (Vector3.Distance(target, AttachedActor.transform.position) <= 1 || timer >= 2)
+		else
 		{
-			NewTarget();
-
-			timer = 0;
-		}
-
-		if (direction != Vector3.zero) //Stops unnecessary movement
-		{
-			AttachedActor.Rbody.MovePosition(AttachedActor.transform.position + (direction * AttachedActor.Data.Acceleration));
-		}
-
-		if (AttachedActor.Rbody.velocity.magnitude > AttachedActor.Data.MaxSpeed) //Stops velocity going crazy
-		{
-			AttachedActor.Rbody.velocity = AttachedActor.Rbody.velocity.normalized * AttachedActor.Data.MaxSpeed;
+			//Idle
 		}
 	}
 
@@ -49,7 +62,7 @@ public class RangedBeeController : ActorController
 	{
 		target = Player.position;
 
-		int yMin = 5;
+		int yMin = 10;
 		int yMax = 15;
 
 		target += Vector3.up * Random.Range(yMin, yMax);
