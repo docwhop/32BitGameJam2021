@@ -2,15 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "NewMeleeBeeController", menuName = "Actor controllers/Melee bee controller")]
-public class MeleeBeeController : ActorController
+[CreateAssetMenu(fileName = "NewRangedBeeController", menuName = "Actor controllers/Ranged bee controller")]
+public class RangedBeeController : ActorController
 {
 	Vector3 target;
 
 	Vector3 direction;
 
-	public float AttackRange;
-	public float ChargeRange;
+	float timer;
 
 	public override void Initialize(Actor _attachedActor)
 	{
@@ -21,35 +20,37 @@ public class MeleeBeeController : ActorController
 
 	public override void FixedUpdate()
 	{
-		if (Vector3.Distance(AttachedActor.transform.position, Player.transform.position) <= AttackRange)
-		{
-			direction = Vector3.zero;
+		timer += Time.deltaTime;
 
-			if (AttachedActor.WeaponHandler.FirePrimary(AttachedActor.transform.position, PlayerDirection()) == true)
-			{
-				//Melee attack
-			}
-		}
-		else if(Vector3.Distance(AttachedActor.transform.position, Player.transform.position) <= ChargeRange)
+		if(CanSeePlayer() == true)
 		{
-			direction = PlayerDirection();
+			if (AttachedActor.WeaponHandler.FirePrimary(AttachedActor.transform.position, PlayerDirection(), AttachedActor.Collider) == true)
+			{
+				//Shot projectile
+			}
+
+			if (Vector3.Distance(target, AttachedActor.transform.position) <= 1 || timer >= 2)
+			{
+				NewTarget();
+
+				timer = 0;
+			}
+
+			if (direction != Vector3.zero) //Stops unnecessary movement
+			{
+				AttachedActor.Rbody.MovePosition(AttachedActor.transform.position + (direction * AttachedActor.Data.Acceleration));
+			}
+
+			AttachedActor.transform.LookAt(Player);
+
+			if (AttachedActor.Rbody.velocity.magnitude > AttachedActor.Data.MaxSpeed) //Stops velocity going crazy
+			{
+				AttachedActor.Rbody.velocity = AttachedActor.Rbody.velocity.normalized * AttachedActor.Data.MaxSpeed;
+			}
 		}
 		else
 		{
-			if (Vector3.Distance(target, AttachedActor.transform.position) <= 1)
-			{
-				NewTarget();
-			}
-		}
-
-		if (direction != Vector3.zero) //Stops unnecessary movement
-		{
-			AttachedActor.Rbody.MovePosition(AttachedActor.transform.position + (direction * AttachedActor.Data.Acceleration));
-		}
-
-		if (AttachedActor.Rbody.velocity.magnitude > AttachedActor.Data.MaxSpeed) //Stops velocity going crazy
-		{
-			AttachedActor.Rbody.velocity = AttachedActor.Rbody.velocity.normalized * AttachedActor.Data.MaxSpeed;
+			//Idle
 		}
 	}
 
@@ -62,8 +63,8 @@ public class MeleeBeeController : ActorController
 
 		target += Vector3.up * Random.Range(yMin, yMax);
 
-		int xMin = 30;
-		int xMax = 40;
+		int xMin = 10;
+		int xMax = 20;
 
 		if (Random.Range(0, 2) == 0)
 		{
@@ -92,6 +93,8 @@ public class MeleeBeeController : ActorController
 		if (collision.gameObject.layer == LayerMask.NameToLayer("Ground") || collision.gameObject.layer == LayerMask.NameToLayer("Default"))
 		{
 			NewTarget(); //Not great
+
+			timer = 0;
 		}
 	}
 }

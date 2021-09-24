@@ -57,11 +57,11 @@ public class WeaponSwitcher : MonoBehaviour
     
     public void SwapWeaponModel()
     {
-        Debug.Log("SwapWeaponModel called.");
+        //Debug.Log("SwapWeaponModel called.");
         switch (weaponHandler.GetPrimary().WeaponName)
         {
             case WeaponName.NeedleGun:
-                Debug.Log("Needle gun equipped.");
+                //Debug.Log("Needle gun equipped.");
                 needleGun.SetActive(true);
                 honeyLauncher.SetActive(false);
                 pollenator.SetActive(false);
@@ -69,7 +69,7 @@ public class WeaponSwitcher : MonoBehaviour
                 needleGun.transform.localPosition = Vector3.zero;
                 break;
             case WeaponName.HoneyLauncher:
-                Debug.Log("Honey Launcher equipped.");
+                //Debug.Log("Honey Launcher equipped.");
                 honeyLauncher.SetActive(true);
                 needleGun.SetActive(false);
                 pollenator.SetActive(false);
@@ -78,7 +78,7 @@ public class WeaponSwitcher : MonoBehaviour
 
                 break;
             case WeaponName.Pollenator:
-                Debug.Log("Pollenator equipped.");
+                //Debug.Log("Pollenator equipped.");
                 pollenator.SetActive(true);
                 needleGun.SetActive(false);
                 honeyLauncher.SetActive(false);

@@ -8,6 +8,8 @@ public class Actor : MonoBehaviour
 
 	[HideInInspector] public Rigidbody Rbody;
 
+	[HideInInspector] public Collider Collider;
+
 	[HideInInspector] public WeaponHandler WeaponHandler;
 
 	public ActorData Data;
@@ -19,6 +21,8 @@ public class Actor : MonoBehaviour
 		Health = GetComponent<Health>();
 
 		Rbody = GetComponent<Rigidbody>();
+
+		Collider = GetComponent<Collider>();
 
 		WeaponHandler = GetComponent<WeaponHandler>();
 
