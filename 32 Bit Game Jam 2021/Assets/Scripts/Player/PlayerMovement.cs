@@ -55,6 +55,7 @@ public class PlayerMovement : MonoBehaviour
         if(isGrounded && velocity.y < 0)
         {
             velocity.y = -2f;
+            timeHovering = 0f;
             hoverSource.Stop();
             alreadyPlayed = false;
         }
