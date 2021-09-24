@@ -9,14 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cff3cfdd5d3dffb469a08f40c3b08273, type: 3}
-  m_Name: RangedBeeWeapon
+  m_Script: {fileID: 11500000, guid: 9f184d71c86590c4296e37cbf19bda79, type: 3}
+  m_Name: MeleeBeeWeapon
   m_EditorClassIdentifier: 
-  WeaponName: 0
+  WeaponName: 3
   FireAudio: {fileID: 8300000, guid: 657a0f3aa73a0e549b1ed4e8ce2ae879, type: 3}
-  FireRate: 0.75
+  FireRate: 0.5
   Accuracy: 0
   ProjectileCount: 1
   Range: 1
   Damage: 1
-  Speed: 50
+  Size: {x: 3, y: 3, z: 3}

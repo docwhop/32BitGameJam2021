@@ -33,7 +33,7 @@ public class WeaponHandler : MonoBehaviour
         reload.Play();
 	}
 
-	public bool FirePrimary(Vector3 _weaponEnd, Vector3 _direction)
+	public bool FirePrimary(Vector3 _weaponEnd, Vector3 _direction, Collider _ignore = null)
 	{
 		if(fireTimer >= GetPrimary().FireRate)
 		{
@@ -51,7 +51,8 @@ public class WeaponHandler : MonoBehaviour
 						ParseProjectile(GetPrimary()).Speed,
 						GetPrimary().Range,
 						GetPrimary().Damage, 
-                        GetPrimary().WeaponName
+                        GetPrimary().WeaponName,
+						_ignore
 					);
 				}
 			}
@@ -73,11 +74,11 @@ public class WeaponHandler : MonoBehaviour
 			}
 			else if(GetPrimary().GetType() == typeof(MeleeWeapon))
 			{
-				Collider[] hitCols = Physics.OverlapBox(_weaponEnd + (_direction * GetPrimary().Range), ParseMelee(GetPrimary()).Size, Quaternion.identity);
+				Collider[] hitCols = Physics.OverlapBox(_weaponEnd, ParseMelee(GetPrimary()).Size, Quaternion.identity);
 
 				for (int i = 0; i < hitCols.Length; i++)
 				{
-					if (hitCols[i].TryGetComponent(out Health hitHealth) == true)
+					if (hitCols[i].gameObject != gameObject && hitCols[i].TryGetComponent(out Health hitHealth) == true)
 					{
 						hitHealth.Damage(GetPrimary().Damage);
 					}

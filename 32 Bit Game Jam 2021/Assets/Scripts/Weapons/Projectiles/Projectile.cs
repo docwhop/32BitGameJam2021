@@ -24,6 +24,10 @@ public class Projectile : MonoBehaviour
 
 		transform.forward = direction;
 
+		//Bad but resets IgnoreCollider values
+		GetComponent<Collider>().enabled = false;
+		GetComponent<Collider>().enabled = true;
+
 		ttl = 0;
 	}
 
@@ -39,6 +43,11 @@ public class Projectile : MonoBehaviour
 
 		transform.position = transform.position + (direction * speed * Time.deltaTime);
 		transform.forward = direction;
+	}
+
+	public void IgnoreCollider(Collider col)
+	{
+		Physics.IgnoreCollision(GetComponent<Collider>(), col, true);
 	}
 
 	private void OnCollisionEnter(Collision collision)
