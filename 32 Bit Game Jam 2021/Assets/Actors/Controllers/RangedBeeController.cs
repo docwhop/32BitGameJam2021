@@ -11,15 +11,11 @@ public class RangedBeeController : ActorController
 
 	float timer;
 
-	Transform gunEnd;
-
 	public override void Initialize(Actor _attachedActor)
 	{
 		base.Initialize(_attachedActor);
 
 		NewTarget();
-
-		gunEnd = AttachedActor.transform.GetChild(0);
 	}
 
 	public override void FixedUpdate()
@@ -28,7 +24,7 @@ public class RangedBeeController : ActorController
 
 		if(CanSeePlayer() == true)
 		{
-			if (AttachedActor.WeaponHandler.FirePrimary(gunEnd.position, PlayerDirection(), AttachedActor.Collider) == true)
+			if (AttachedActor.WeaponHandler.FirePrimary(AttachedActor.transform.position, PlayerDirection(), AttachedActor.Collider) == true)
 			{
 				//Shot projectile
 			}
