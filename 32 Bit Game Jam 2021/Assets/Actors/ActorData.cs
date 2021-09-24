@@ -5,8 +5,6 @@ using UnityEngine;
 [CreateAssetMenu]
 public class ActorData : ScriptableObject
 {
-	public int HP;
-
 	//Makes setting values easier to read, 1 instead of 0.001f
 	public float Acceleration { get { return acceleration * 0.01f; } }
 	[SerializeField] private float acceleration;

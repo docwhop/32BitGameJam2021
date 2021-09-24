@@ -9,6 +9,8 @@ public class RangedBeeController : ActorController
 
 	Vector3 direction;
 
+	float timer;
+
 	public override void Initialize(Actor _attachedActor)
 	{
 		base.Initialize(_attachedActor);
@@ -18,14 +20,18 @@ public class RangedBeeController : ActorController
 
 	public override void FixedUpdate()
 	{
+		timer += Time.deltaTime;
+
 		if (AttachedActor.WeaponHandler.FirePrimary(AttachedActor.transform.position, PlayerDirection()) == true)
 		{
 			//Shot projectile
 		}
 
-		if (Vector3.Distance(target, AttachedActor.transform.position) <= 1)
+		if (Vector3.Distance(target, AttachedActor.transform.position) <= 1 || timer >= 2)
 		{
 			NewTarget();
+
+			timer = 0;
 		}
 
 		if (direction != Vector3.zero) //Stops unnecessary movement
@@ -43,13 +49,13 @@ public class RangedBeeController : ActorController
 	{
 		target = Player.position;
 
-		int yMin = 10;
+		int yMin = 5;
 		int yMax = 15;
 
 		target += Vector3.up * Random.Range(yMin, yMax);
 
-		int xMin = 30;
-		int xMax = 40;
+		int xMin = 10;
+		int xMax = 20;
 
 		if (Random.Range(0, 2) == 0)
 		{
@@ -78,6 +84,8 @@ public class RangedBeeController : ActorController
 		if (collision.gameObject.layer == LayerMask.NameToLayer("Ground") || collision.gameObject.layer == LayerMask.NameToLayer("Default"))
 		{
 			NewTarget(); //Not great
+
+			timer = 0;
 		}
 	}
 }
