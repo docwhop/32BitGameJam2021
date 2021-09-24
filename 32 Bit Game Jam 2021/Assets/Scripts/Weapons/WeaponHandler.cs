@@ -14,6 +14,9 @@ public class WeaponHandler : MonoBehaviour
 
 	AudioSource audioSource;
 
+    [SerializeField]
+    private AudioSource reload;
+
 	void Awake()
 	{
 		audioSource = GetComponent<AudioSource>();	
@@ -27,6 +30,7 @@ public class WeaponHandler : MonoBehaviour
     public void Reload()
     {
 		EventManager.Instance.WeaponReloaded();
+        reload.Play();
 	}
 
 	public bool FirePrimary(Vector3 _weaponEnd, Vector3 _direction)
