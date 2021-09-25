@@ -18,7 +18,7 @@ public class Pause : MonoBehaviour
     {
         if (Input.GetKeyDown("escape"))
         {
-            Debug.Log("Escape key pressed");
+            //Debug.Log("Escape key pressed");
             if (!GameManager.Instance.IsGamePaused)
             {
                 PauseGame();
@@ -28,7 +28,7 @@ public class Pause : MonoBehaviour
                 Cursor.lockState = CursorLockMode.Locked;
                 if (optionsPanel.activeInHierarchy)
                 {
-                    Debug.Log("optionspop");
+                    //Debug.Log("optionspop");
                     optionsPanel.SetActive(false);
                 }
                 ContinueGame();

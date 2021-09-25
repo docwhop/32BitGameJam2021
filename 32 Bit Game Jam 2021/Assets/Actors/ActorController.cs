@@ -34,6 +34,11 @@ public class ActorController : ScriptableObject
 
 	}
 
+	public virtual void AnimEvent()
+	{
+
+	}
+
 	public Vector3 PlayerDirection()
 	{
 		return (Player.position - AttachedActor.transform.position).normalized;
@@ -41,9 +46,9 @@ public class ActorController : ScriptableObject
 
 	public bool CanSeePlayer()
 	{
-		if(Vector3.Distance(AttachedActor.transform.position, Player.position) <= 40)
+		if(Vector3.Distance(AttachedActor.transform.position, Player.position) <= 60)
 		{
-			if(Physics.Raycast(AttachedActor.transform.position, PlayerDirection(), out RaycastHit raycastHit, 40) == true)
+			if(Physics.Raycast(AttachedActor.transform.position, PlayerDirection(), out RaycastHit raycastHit, 60) == true)
 			{
 				if(raycastHit.transform.tag == "Player")
 				{

@@ -16,6 +16,8 @@ public class RangedBeeController : ActorController
 
 	int gunEndIndex;
 
+	bool attacking;
+
 	public override void Initialize(Actor _attachedActor)
 	{
 		base.Initialize(_attachedActor);
@@ -27,34 +29,35 @@ public class RangedBeeController : ActorController
 	{
 		if(CanSeePlayer() == true)
 		{
-			newTargetTimer += Time.deltaTime;
+			newTargetTimer += Time.fixedDeltaTime;
 
-			attackTimer += Time.deltaTime;
+			attackTimer += Time.fixedDeltaTime;
 
-			if (attackTimer >= 3)
+			if (attacking == true)
 			{
-				if(attackTrigger == true)
-				{
-					Animator.SetTrigger("Attack");
-
-					attackTrigger = false;
-				}
-
 				Vector3 gunDir = (Player.position - AttachedActor.GunEnds[gunEndIndex].position).normalized;
 
-				if(AttachedActor.WeaponHandler.FirePrimary(AttachedActor.GunEnds[gunEndIndex].position, gunDir, AttachedActor.Collider) == true)
+				if (AttachedActor.WeaponHandler.FirePrimary(AttachedActor.GunEnds[gunEndIndex].position, gunDir, AttachedActor.Collider) == true)
 				{
 					gunEndIndex++;
 
-					if(gunEndIndex >= AttachedActor.GunEnds.Length)
+					if (gunEndIndex >= AttachedActor.GunEnds.Length)
 					{
 						gunEndIndex = 0;
 					}
 				}
 
-				if(attackTimer >= 4.5f)
+				if (attackTimer >= 1.5f)
 				{
-					attackTrigger = true;
+					attacking = false;
+					attackTimer = 0;
+				}
+			}
+			else
+			{
+				if (attackTimer >= 4)
+				{
+					Animator.SetTrigger("Attack");
 					attackTimer = 0;
 				}
 			}
@@ -65,6 +68,8 @@ public class RangedBeeController : ActorController
 
 				newTargetTimer = 0;
 			}
+
+			direction = Vector3.Lerp(direction, (target - AttachedActor.transform.position).normalized, 1 * Time.fixedDeltaTime);
 
 			if (direction != Vector3.zero) //Stops unnecessary movement
 			{
@@ -104,7 +109,17 @@ public class RangedBeeController : ActorController
 		else
 		{
 			Animator.SetInteger("MoveState", 0);
+
+			newTargetTimer = 0;
+			attackTimer = 0;
+			attackTrigger = true;
 		}
+	}
+
+	public override void AnimEvent()
+	{
+		attacking = true;
+		attackTimer = 0;
 	}
 
 	void NewTarget()
@@ -116,8 +131,8 @@ public class RangedBeeController : ActorController
 
 		target += Vector3.up * Random.Range(yMin, yMax);
 
-		int xMin = 10;
-		int xMax = 20;
+		int xMin = 15;
+		int xMax = 25;
 
 		if (Random.Range(0, 2) == 0)
 		{
@@ -136,8 +151,6 @@ public class RangedBeeController : ActorController
 		{
 			target += Vector3.back * Random.Range(xMin, xMax);
 		}
-
-		direction = (target - AttachedActor.transform.position).normalized;
 	}
 
 	public override void OnCollisionEnter(Collision collision)

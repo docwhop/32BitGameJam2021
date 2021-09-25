@@ -69,4 +69,9 @@ public class Actor : MonoBehaviour
 		//When killed calls this method
 		gameObject.SetActive(false);
 	}
+
+	public void ControllerAnimEvent() //This sucks but dont have time for proper solution
+	{
+		Controller.AnimEvent();
+	}
 }

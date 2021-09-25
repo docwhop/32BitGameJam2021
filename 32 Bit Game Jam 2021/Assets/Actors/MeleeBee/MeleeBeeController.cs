@@ -14,8 +14,6 @@ public class MeleeBeeController : ActorController
 
 	float timer;
 
-	float attackTimer;
-
 	public override void Initialize(Actor _attachedActor)
 	{
 		base.Initialize(_attachedActor);
@@ -33,15 +31,6 @@ public class MeleeBeeController : ActorController
 			{
 				Animator.SetTrigger("Attack");
 
-				attackTimer += Time.deltaTime;
-
-				if (attackTimer >= 1)
-				{
-					AttachedActor.WeaponHandler.FirePrimary(AttachedActor.transform.position, PlayerDirection());
-
-					attackTimer = 0;
-				}
-
 				direction = Vector3.zero;
 			}
 			else if (Vector3.Distance(AttachedActor.transform.position, Player.transform.position) <= ChargeRange) //Charge
@@ -57,6 +46,8 @@ public class MeleeBeeController : ActorController
 					timer = 0;
 				}
 			}
+
+			direction = Vector3.Lerp(direction, (target - AttachedActor.transform.position).normalized, 1 * Time.fixedDeltaTime);
 
 			if (direction != Vector3.zero) //Stops unnecessary movement
 			{
@@ -92,8 +83,6 @@ public class MeleeBeeController : ActorController
 				//Back
 				Animator.SetInteger("MoveState", 2);
 			}
-
-			Debug.Log(Animator.GetInteger("MoveState"));
 		}
 		else
 		{
@@ -101,12 +90,17 @@ public class MeleeBeeController : ActorController
 		}
 	}
 
+	public override void AnimEvent()
+	{
+		AttachedActor.WeaponHandler.FirePrimary(AttachedActor.transform.position, PlayerDirection());
+	}
+
 	void NewTarget()
 	{
 		target = Player.position;
 
-		int yMin = 5;
-		int yMax = 15;
+		int yMin = 0;
+		int yMax = 10;
 
 		target += Vector3.up * Random.Range(yMin, yMax);
 
@@ -130,8 +124,6 @@ public class MeleeBeeController : ActorController
 		{
 			target += Vector3.back * Random.Range(xMin, xMax);
 		}
-
-		direction = (target - AttachedActor.transform.position).normalized;
 	}
 
 	public override void OnCollisionEnter(Collision collision)
