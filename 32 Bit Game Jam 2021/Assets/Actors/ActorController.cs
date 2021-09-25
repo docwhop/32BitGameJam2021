@@ -56,7 +56,7 @@ public class ActorController : ScriptableObject
 
 	public bool CanSeePlayer()
 	{
-		if(Vector3.Distance(AttachedActor.transform.position, Player.position) <= 60)
+		if(Vector3.Distance(AttachedActor.transform.position, Player.position) <= 80)
 		{
 			return true;
 		}

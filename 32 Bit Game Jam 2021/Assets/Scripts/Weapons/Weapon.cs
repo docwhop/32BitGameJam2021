@@ -8,6 +8,7 @@ public enum WeaponName
     NeedleGun,
     HoneyLauncher,
     Pollenator,
+	Cannon,
     None,
 }
 
