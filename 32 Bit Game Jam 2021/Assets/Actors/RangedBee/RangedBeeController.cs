@@ -50,7 +50,7 @@ public class RangedBeeController : ActorController
 					}
 				}
 
-				if (attackTimer >= 1)
+				if (attackTimer >= 1.25f)
 				{
 					attacking = false;
 					attackTimer = 0;
@@ -58,14 +58,12 @@ public class RangedBeeController : ActorController
 			}
 			else
 			{
-				if (attackTimer >= 4)
+				if (attackTimer >= 3)
 				{
 					Animator.SetTrigger("Attack");
 					attackTimer = 0;
 				}
 			}
-
-			Debug.Log(attacking + " : " + attackTimer);
 
 			if (Vector3.Distance(target, AttachedActor.transform.position) <= 1 || newTargetTimer >= 2)
 			{
@@ -114,9 +112,6 @@ public class RangedBeeController : ActorController
 		else
 		{
 			Animator.SetInteger("MoveState", 0);
-
-			newTargetTimer = 0;
-			attackTimer = 0;
 		}
 	}
 

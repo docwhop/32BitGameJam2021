@@ -4,45 +4,45 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-	Vector3 direction;
+	protected Vector3 Direction;
 
-	float speed;
+	protected float Speed;
 
-	float range; //Seconds
+	protected float Range; //Seconds
 
-	int damage;
+	protected int Damage;
 
-	float ttl;
+	protected float TTL;
 
-	public void Initialize(Vector3 _position, Vector3 _direction, float _speed, float _range, int _damage)
+	public virtual void Initialize(Vector3 _position, Vector3 _direction, float _speed, float _range, int _damage)
 	{
 		transform.position = _position;
-		direction = _direction;
-		speed = _speed;
-		range = _range;
-		damage = _damage;
+		Direction = _direction;
+		Speed = _speed;
+		Range = _range;
+		Damage = _damage;
 
-		transform.forward = direction;
+		transform.forward = Direction;
 
 		//Bad but resets IgnoreCollider values
 		GetComponent<Collider>().enabled = false;
 		GetComponent<Collider>().enabled = true;
 
-		ttl = 0;
+		TTL = 0;
 	}
 
-	void Update()
+	public virtual void Update()
 	{
-		ttl += Time.deltaTime;
+		TTL += Time.deltaTime;
 
-		if(ttl >= range)
+		if(TTL >= Range)
 		{
-			ttl = 0;
+			TTL = 0;
 			gameObject.SetActive(false);
 		}
 
-		transform.position = transform.position + (direction * speed * Time.deltaTime);
-		transform.forward = direction;
+		transform.position = transform.position + (Direction * Speed * Time.deltaTime);
+		transform.forward = Direction;
 	}
 
 	public void IgnoreCollider(Collider col)
@@ -50,11 +50,11 @@ public class Projectile : MonoBehaviour
 		Physics.IgnoreCollision(GetComponent<Collider>(), col, true);
 	}
 
-	private void OnCollisionEnter(Collision collision)
+	public virtual void OnCollisionEnter(Collision collision)
 	{
 		if(collision.gameObject.GetComponent<Health>())
 		{
-			collision.gameObject.GetComponent<Health>().Damage(damage);
+			collision.gameObject.GetComponent<Health>().Damage(Damage);
 		}
 
 		gameObject.SetActive(false);

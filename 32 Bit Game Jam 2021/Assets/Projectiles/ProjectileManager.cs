@@ -49,9 +49,9 @@ public class ProjectileManager : MonoBehaviour
                 {
                     if (needlePool[i].gameObject.activeSelf == false)
                     {
-                        needlePool[i].Initialize(_position, _direction, _speed, _range, _damage);
+						needlePool[i].gameObject.SetActive(true);
 
-                        needlePool[i].gameObject.SetActive(true);
+						needlePool[i].Initialize(_position, _direction, _speed, _range, _damage);
 
 						if (_ignore != null)
 						{
@@ -66,9 +66,9 @@ public class ProjectileManager : MonoBehaviour
                 {
                     if (honeyLauncherPool[i].gameObject.activeSelf == false)
                     {
-                        honeyLauncherPool[i].Initialize(_position, _direction, _speed, _range, _damage);
-
 						honeyLauncherPool[i].gameObject.SetActive(true);
+
+						honeyLauncherPool[i].Initialize(_position, _direction, _speed, _range, _damage);
 
 						if (_ignore != null)
 						{
@@ -83,9 +83,9 @@ public class ProjectileManager : MonoBehaviour
                 {
                     if (pollenatorPool[i].gameObject.activeSelf == false)
                     {
-                        pollenatorPool[i].Initialize(_position, _direction, _speed, _range, _damage);
+						pollenatorPool[i].gameObject.SetActive(true);
 
-                        pollenatorPool[i].gameObject.SetActive(true);
+						pollenatorPool[i].Initialize(_position, _direction, _speed, _range, _damage);
 
 						if (_ignore != null)
 						{
