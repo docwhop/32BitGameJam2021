@@ -13,12 +13,12 @@ public class FirstPersonShoot : MonoBehaviour
 
     private void OnEnable()
     {
-        EventManager.weaponChangedEvent += AssignFirePoints; 
+        //EventManager.weaponChangedEvent += AssignFirePoints; 
     }
 
     private void OnDisable()
     {
-        EventManager.weaponChangedEvent -= AssignFirePoints;
+        //EventManager.weaponChangedEvent -= AssignFirePoints;
     }
 
     private void Awake()
@@ -58,9 +58,9 @@ public class FirstPersonShoot : MonoBehaviour
 		return (destination - FirePoints[firePointIndex].position).normalized;
 	}
 
-    public void AssignFirePoints()
-    {
-        // Each gun has its own child game object called "Projectile spawn point" which defines where the projectile will shoot from on the weapon model. 
-        // Find and assign it here.
-    }
+    //public void AssignFirePoints()
+    //{
+    //    // Each gun has its own child game object called "Projectile spawn point" which defines where the projectile will shoot from on the weapon model. 
+    //    // Find and assign it here.
+    //}
 }

@@ -8,11 +8,15 @@ public class EventManager : MonoBehaviour
     public delegate void OnKeyPickupDelegate();
     public static event OnKeyPickupDelegate keyPickupEvent;
 
-    public delegate void OnWeaponChangedDelegate();
+    public delegate void OnWeaponChangedDelegate(WeaponName name);
     public static event OnWeaponChangedDelegate weaponChangedEvent;
 
     public delegate void OnWeaponReloadDelegate();
     public static event OnWeaponReloadDelegate weaponReloadedEvent;
+
+    public delegate void OnWeaponFiredDelegate();
+    public static event OnWeaponFiredDelegate weaponFiredEvent;
+
 
     private static EventManager _instance;
 
@@ -37,10 +41,10 @@ public class EventManager : MonoBehaviour
         keyPickupEvent?.Invoke();
     }
 
-    public void WeaponChanged()
+    public void WeaponChanged(WeaponName name)
     {
         Debug.Log("Weapon Changed called in EventManager");
-        weaponChangedEvent?.Invoke();
+        weaponChangedEvent?.Invoke(name);
     }
 
     public void WeaponReloaded()
@@ -48,5 +52,9 @@ public class EventManager : MonoBehaviour
         weaponReloadedEvent?.Invoke();
     }
 
+    public void WeaponFired()
+    {
+        weaponFiredEvent?.Invoke();
+    }
 
 }

@@ -116,7 +116,7 @@ public class WeaponHandler : MonoBehaviour
 		}
 
 		fireTimer = 0;
-        EventManager.Instance.WeaponChanged();
+        EventManager.Instance.WeaponChanged(Weapons[selectedIndex].WeaponName);
     }
 
 	public void NextWeapon()
@@ -129,7 +129,7 @@ public class WeaponHandler : MonoBehaviour
 		}
 
 		fireTimer = 0;
-        EventManager.Instance.WeaponChanged();
+        EventManager.Instance.WeaponChanged(Weapons[selectedIndex].WeaponName);
     }
 
     public void PreviousWeapon()
@@ -144,7 +144,7 @@ public class WeaponHandler : MonoBehaviour
         }
 
         fireTimer = 0;
-        EventManager.Instance.WeaponChanged();
+        EventManager.Instance.WeaponChanged(Weapons[selectedIndex].WeaponName);
     }
 
 	ProjectileWeapon ParseProjectile(Weapon _weapon)
