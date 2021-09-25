@@ -14,6 +14,8 @@ public class MeleeBeeController : ActorController
 
 	float timer;
 
+	float attackTimer;
+
 	public override void Initialize(Actor _attachedActor)
 	{
 		base.Initialize(_attachedActor);
@@ -23,24 +25,30 @@ public class MeleeBeeController : ActorController
 
 	public override void FixedUpdate()
 	{
-		timer += Time.deltaTime;
-
 		if(CanSeePlayer() == true)
 		{
-			if (Vector3.Distance(AttachedActor.transform.position, Player.transform.position) <= AttackRange)
-			{
-				direction = Vector3.zero;
+			timer += Time.deltaTime;
 
-				if (AttachedActor.WeaponHandler.FirePrimary(AttachedActor.transform.position, PlayerDirection()) == true)
+			if (Vector3.Distance(AttachedActor.transform.position, Player.transform.position) <= AttackRange) //Attack
+			{
+				Animator.SetTrigger("Attack");
+
+				attackTimer += Time.deltaTime;
+
+				if (attackTimer >= 1)
 				{
-					//Melee attack
+					AttachedActor.WeaponHandler.FirePrimary(AttachedActor.transform.position, PlayerDirection());
+
+					attackTimer = 0;
 				}
+
+				direction = Vector3.zero;
 			}
-			else if (Vector3.Distance(AttachedActor.transform.position, Player.transform.position) <= ChargeRange)
+			else if (Vector3.Distance(AttachedActor.transform.position, Player.transform.position) <= ChargeRange) //Charge
 			{
 				direction = PlayerDirection();
 			}
-			else
+			else //Hover
 			{
 				if (Vector3.Distance(target, AttachedActor.transform.position) <= 1 || timer >= 2)
 				{
@@ -55,14 +63,41 @@ public class MeleeBeeController : ActorController
 				AttachedActor.Rbody.MovePosition(AttachedActor.transform.position + (direction * AttachedActor.Data.Acceleration));
 			}
 
+			AttachedActor.transform.LookAt(Player);
+
 			if (AttachedActor.Rbody.velocity.magnitude > AttachedActor.Data.MaxSpeed) //Stops velocity going crazy
 			{
 				AttachedActor.Rbody.velocity = AttachedActor.Rbody.velocity.normalized * AttachedActor.Data.MaxSpeed;
 			}
+
+			float angle = Vector3.SignedAngle(PlayerDirection(), direction, Vector3.up);
+
+			if (angle <= 45 && angle >= -45)
+			{
+				//Front
+				Animator.SetInteger("MoveState", 1);
+			}
+			else if (angle <= -45 && angle >= -135)
+			{
+				//Right
+				Animator.SetInteger("MoveState", 3);
+			}
+			else if (angle >= 45 && angle <= 135)
+			{
+				//Left
+				Animator.SetInteger("MoveState", 4);
+			}
+			else
+			{
+				//Back
+				Animator.SetInteger("MoveState", 2);
+			}
+
+			Debug.Log(Animator.GetInteger("MoveState"));
 		}
 		else
 		{
-			//Idle
+			Animator.SetInteger("MoveState", 0);
 		}
 	}
 

@@ -16,6 +16,8 @@ public class Actor : MonoBehaviour
 
 	public ActorController Controller;
 
+	public Transform[] GunEnds;
+
 	void Awake()
     {
 		Health = GetComponent<Health>();

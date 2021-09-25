@@ -9,7 +9,12 @@ public class RangedBeeController : ActorController
 
 	Vector3 direction;
 
-	float timer;
+	float newTargetTimer;
+
+	float attackTimer;
+	bool attackTrigger;
+
+	int gunEndIndex;
 
 	public override void Initialize(Actor _attachedActor)
 	{
@@ -20,22 +25,50 @@ public class RangedBeeController : ActorController
 
 	public override void FixedUpdate()
 	{
-		timer += Time.deltaTime;
-
 		if(CanSeePlayer() == true)
 		{
-			if (Vector3.Distance(target, AttachedActor.transform.position) <= 1 || timer >= 2)
+			newTargetTimer += Time.deltaTime;
+
+			attackTimer += Time.deltaTime;
+
+			if (attackTimer >= 3)
+			{
+				if(attackTrigger == true)
+				{
+					Animator.SetTrigger("Attack");
+
+					attackTrigger = false;
+				}
+
+				Vector3 gunDir = (Player.position - AttachedActor.GunEnds[gunEndIndex].position).normalized;
+
+				if(AttachedActor.WeaponHandler.FirePrimary(AttachedActor.GunEnds[gunEndIndex].position, gunDir, AttachedActor.Collider) == true)
+				{
+					gunEndIndex++;
+
+					if(gunEndIndex >= AttachedActor.GunEnds.Length)
+					{
+						gunEndIndex = 0;
+					}
+				}
+
+				if(attackTimer >= 4.5f)
+				{
+					attackTrigger = true;
+					attackTimer = 0;
+				}
+			}
+
+			if (Vector3.Distance(target, AttachedActor.transform.position) <= 1 || newTargetTimer >= 2)
 			{
 				NewTarget();
 
-				timer = 0;
+				newTargetTimer = 0;
 			}
 
 			if (direction != Vector3.zero) //Stops unnecessary movement
 			{
 				AttachedActor.Rbody.MovePosition(AttachedActor.transform.position + (direction * AttachedActor.Data.Acceleration));
-
-				Animator.SetTrigger("Idle");
 			}
 
 			AttachedActor.transform.LookAt(Player);
@@ -45,16 +78,32 @@ public class RangedBeeController : ActorController
 				AttachedActor.Rbody.velocity = AttachedActor.Rbody.velocity.normalized * AttachedActor.Data.MaxSpeed;
 			}
 
-			if (AttachedActor.WeaponHandler.FirePrimary(AttachedActor.transform.position, PlayerDirection(), AttachedActor.Collider) == true)
-			{
-				//Shot projectile
+			float angle = Vector3.SignedAngle(PlayerDirection(), direction, Vector3.up);
 
-				Animator.SetTrigger("Attack");
+			if (angle <= 45 && angle >= -45)
+			{
+				//Front
+				Animator.SetInteger("MoveState", 1);
+			}
+			else if (angle <= -45 && angle >= -135)
+			{
+				//Right
+				Animator.SetInteger("MoveState", 3);
+			}
+			else if (angle >= 45 && angle <= 135)
+			{
+				//Left
+				Animator.SetInteger("MoveState", 4);
+			}
+			else
+			{
+				//Back
+				Animator.SetInteger("MoveState", 2);
 			}
 		}
 		else
 		{
-			//Animator.SetTrigger("Idle");
+			Animator.SetInteger("MoveState", 0);
 		}
 	}
 
@@ -98,7 +147,7 @@ public class RangedBeeController : ActorController
 		{
 			NewTarget(); //Not great
 
-			timer = 0;
+			newTargetTimer = 0;
 		}
 	}
 }
