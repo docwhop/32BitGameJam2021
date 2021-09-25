@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: eaaef9dd0069d6d41979057509480559
+guid: f5eed9b0a5514cc4bbbc35b73feb37c1
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
@@ -7,8 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: M_projectiles
-    second: {fileID: 2100000, guid: a5af195ba2d054e4ea14e2aea74c3bc2, type: 2}
+      name: M_BeeBuster
+    second: {fileID: 2100000, guid: 0aaddbbb10f3d4b4387a2ee053b27d2a, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

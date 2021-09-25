@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: eaaef9dd0069d6d41979057509480559
+guid: af142e7c22619724392284781f5f0d60
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
@@ -7,8 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: M_projectiles
-    second: {fileID: 2100000, guid: a5af195ba2d054e4ea14e2aea74c3bc2, type: 2}
+      name: M_Honeylauncher
+    second: {fileID: 2100000, guid: a9e6db4d4efbced4faf7707671334e45, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

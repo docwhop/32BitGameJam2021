@@ -1,14 +1,9 @@
 fileFormatVersion: 2
-guid: eaaef9dd0069d6d41979057509480559
+guid: 8bfc9f84d3d51084e8d0720aae960f4b
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: M_projectiles
-    second: {fileID: 2100000, guid: a5af195ba2d054e4ea14e2aea74c3bc2, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
