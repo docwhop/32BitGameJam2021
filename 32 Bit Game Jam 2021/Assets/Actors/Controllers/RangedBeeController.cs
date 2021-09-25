@@ -24,11 +24,6 @@ public class RangedBeeController : ActorController
 
 		if(CanSeePlayer() == true)
 		{
-			if (AttachedActor.WeaponHandler.FirePrimary(AttachedActor.transform.position, PlayerDirection(), AttachedActor.Collider) == true)
-			{
-				//Shot projectile
-			}
-
 			if (Vector3.Distance(target, AttachedActor.transform.position) <= 1 || timer >= 2)
 			{
 				NewTarget();
@@ -39,6 +34,8 @@ public class RangedBeeController : ActorController
 			if (direction != Vector3.zero) //Stops unnecessary movement
 			{
 				AttachedActor.Rbody.MovePosition(AttachedActor.transform.position + (direction * AttachedActor.Data.Acceleration));
+
+				Animator.SetTrigger("Idle");
 			}
 
 			AttachedActor.transform.LookAt(Player);
@@ -47,10 +44,17 @@ public class RangedBeeController : ActorController
 			{
 				AttachedActor.Rbody.velocity = AttachedActor.Rbody.velocity.normalized * AttachedActor.Data.MaxSpeed;
 			}
+
+			if (AttachedActor.WeaponHandler.FirePrimary(AttachedActor.transform.position, PlayerDirection(), AttachedActor.Collider) == true)
+			{
+				//Shot projectile
+
+				Animator.SetTrigger("Attack");
+			}
 		}
 		else
 		{
-			//Idle
+			//Animator.SetTrigger("Idle");
 		}
 	}
 

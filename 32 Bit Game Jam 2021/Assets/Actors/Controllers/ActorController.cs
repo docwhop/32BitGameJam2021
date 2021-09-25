@@ -8,16 +8,20 @@ public class ActorController : ScriptableObject
 
 	protected Actor AttachedActor;
 
+	protected Animator Animator;
+
 	public virtual void Initialize(Actor _attachedActor)
 	{
 		AttachedActor = _attachedActor;
+
+		Animator = AttachedActor.GetComponent<Animator>();
 
 		Player = Camera.main.transform.parent;
 	}
 
 	public virtual void Update()
 	{
-
+		
 	}
 
 	public virtual void FixedUpdate()
