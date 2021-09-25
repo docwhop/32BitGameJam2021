@@ -38,7 +38,7 @@ public class Footsteps : MonoBehaviour
     void Update()
     {
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
-        if (controller.isGrounded == true && controller.velocity.magnitude > 0f && stepSource.isPlaying == false)
+        if (controller.isGrounded == true && controller.velocity.magnitude > 0 && stepSource.isPlaying == false)
         {
             StepSound(clips);
         }
