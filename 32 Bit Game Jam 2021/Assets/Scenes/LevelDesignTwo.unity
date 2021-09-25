@@ -11490,6 +11490,7 @@ MonoBehaviour:
   honeyLauncher: {fileID: 4781768412695662868}
   pollenator: {fileID: 6725280428462183646}
   weaponHandler: {fileID: 103180670}
+  armsParent: {fileID: 0}
 --- !u!1001 &1282414455
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13134,6 +13135,63 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf76a54493fd8aa4d822d57a6808a77f, type: 3}
+--- !u!1001 &1431533217
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4143499717486474433, guid: 897a4aa984dff0549abaebf41df863be, type: 3}
+      propertyPath: m_Name
+      value: key test
+      objectReference: {fileID: 0}
+    - target: {fileID: 4143499717486474439, guid: 897a4aa984dff0549abaebf41df863be, type: 3}
+      propertyPath: m_RootOrder
+      value: 23
+      objectReference: {fileID: 0}
+    - target: {fileID: 4143499717486474439, guid: 897a4aa984dff0549abaebf41df863be, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 200.59
+      objectReference: {fileID: 0}
+    - target: {fileID: 4143499717486474439, guid: 897a4aa984dff0549abaebf41df863be, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 19.47
+      objectReference: {fileID: 0}
+    - target: {fileID: 4143499717486474439, guid: 897a4aa984dff0549abaebf41df863be, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 107.12001
+      objectReference: {fileID: 0}
+    - target: {fileID: 4143499717486474439, guid: 897a4aa984dff0549abaebf41df863be, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4143499717486474439, guid: 897a4aa984dff0549abaebf41df863be, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4143499717486474439, guid: 897a4aa984dff0549abaebf41df863be, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4143499717486474439, guid: 897a4aa984dff0549abaebf41df863be, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4143499717486474439, guid: 897a4aa984dff0549abaebf41df863be, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4143499717486474439, guid: 897a4aa984dff0549abaebf41df863be, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4143499717486474439, guid: 897a4aa984dff0549abaebf41df863be, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 897a4aa984dff0549abaebf41df863be, type: 3}
 --- !u!1 &1434057843
 GameObject:
   m_ObjectHideFlags: 0
@@ -13209,6 +13267,7 @@ MonoBehaviour:
   needleProjPrefab: {fileID: 6168344879205481313, guid: 1e5810b44d5b652408004bb16c8c0db1, type: 3}
   honeyLauncherProjPrefab: {fileID: 872226790677454867, guid: 128e04331b5622b43afec7cbb7fe126c, type: 3}
   pollenatorProjPrefab: {fileID: 5553901750442495470, guid: e965c749b1829e84f994caa4fcc1ef22, type: 3}
+  cannonProjPrefab: {fileID: 0}
   size: 100
 --- !u!4 &1440782581
 Transform:
