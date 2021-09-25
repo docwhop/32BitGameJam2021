@@ -39,6 +39,7 @@ public class EventManager : MonoBehaviour
 
     public void WeaponChanged()
     {
+        Debug.Log("Weapon Changed called in EventManager");
         weaponChangedEvent?.Invoke();
     }
 
