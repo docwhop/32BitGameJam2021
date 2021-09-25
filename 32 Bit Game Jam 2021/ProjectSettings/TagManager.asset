@@ -8,6 +8,8 @@ TagManager:
   - Bullet
   - Key
   - ProjectileSpawnPoint
+  - IntroHoneyLava
+  - MainHoneyLava
   layers:
   - Default
   - TransparentFX

@@ -109,4 +109,13 @@ public class PlayerMovement : MonoBehaviour
 	{
 		velocity += _force;
 	}
+
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        if (hit.gameObject.tag == "IntroHoneyLava" || hit.gameObject.tag == "MainHoneyLava")
+        {
+            Vector3 spawnPoint = GameManager.Instance.GetSpawnpoint(hit);
+            transform.position = new Vector3(spawnPoint.x, spawnPoint.y, spawnPoint.z);
+        }
+    }
 }
