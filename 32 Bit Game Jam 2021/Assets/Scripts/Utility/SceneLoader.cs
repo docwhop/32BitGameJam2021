@@ -20,6 +20,13 @@ public class SceneLoader : MonoBehaviour
         
     }
 
+    public void LoadLevelDesignOne()
+    {
+        masterMixer.SetFloat("musicCutoff", 22000);
+        AudioManager.Instance.PlayMusic(gameplayMusic);
+        SceneManager.LoadScene("LevelDesignOne");
+    }
+
     public void LoadMainMenu()
     {
         masterMixer.SetFloat("musicCutoff", 22000);

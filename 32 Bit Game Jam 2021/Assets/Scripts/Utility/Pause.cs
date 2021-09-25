@@ -7,6 +7,7 @@ public class Pause : MonoBehaviour
 {
     [SerializeField] private GameObject pausePanel;
     [SerializeField] private GameObject optionsPanel;
+    [SerializeField] private GameObject gameOverPanel;
     public AudioMixer masterMixer;
 
     void Start()
@@ -18,7 +19,7 @@ public class Pause : MonoBehaviour
     {
         if (Input.GetKeyDown("escape"))
         {
-            Debug.Log("Escape key pressed");
+            //Debug.Log("Escape key pressed");
             if (!GameManager.Instance.IsGamePaused)
             {
                 PauseGame();
@@ -28,7 +29,7 @@ public class Pause : MonoBehaviour
                 Cursor.lockState = CursorLockMode.Locked;
                 if (optionsPanel.activeInHierarchy)
                 {
-                    Debug.Log("optionspop");
+                    //Debug.Log("optionspop");
                     optionsPanel.SetActive(false);
                 }
                 ContinueGame();

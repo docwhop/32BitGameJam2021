@@ -51,6 +51,23 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        Collider[] hitColliders = Physics.OverlapSphere(groundCheck.position, groundDistance);
+        foreach (var hitCollider in hitColliders)
+        {
+            if(hitCollider.gameObject.tag == "MovingPlatform")
+            {
+                transform.parent = hitCollider.gameObject.transform;
+                break;
+            }
+            else
+            {
+                transform.parent = null;
+            }
+        }
+
+
+
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
         if(isGrounded && velocity.y < 0)
         {
@@ -109,4 +126,13 @@ public class PlayerMovement : MonoBehaviour
 	{
 		velocity += _force;
 	}
+
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        if (hit.gameObject.tag == "IntroHoneyLava" || hit.gameObject.tag == "MainHoneyLava")
+        {
+            Vector3 spawnPoint = GameManager.Instance.GetSpawnpoint(hit);
+            transform.position = new Vector3(spawnPoint.x, spawnPoint.y, spawnPoint.z);
+        }
+    }
 }

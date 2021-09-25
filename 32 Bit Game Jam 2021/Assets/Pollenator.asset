@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WeaponName: 2
   FireAudio: {fileID: 8300000, guid: 657a0f3aa73a0e549b1ed4e8ce2ae879, type: 3}
-  FireRate: 1
+  FireRate: 0.5
   Accuracy: 25
-  ProjectileCount: 5
+  ProjectileCount: 10
   Range: 1
   Damage: 1
   Speed: 50

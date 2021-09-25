@@ -9,7 +9,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: M_Bee_Body
   m_Shader: {fileID: 4800000, guid: 94cb0d6305cd4a743b1d2ec684e277de, type: 3}
-  m_ShaderKeywords: DIFF_VERTEX OPAQUE SPEC_GOURAUD UNLIT _DIFFMODEL_VERTEX _DRAWDIST_ON
+  m_ShaderKeywords: CUTOUT DIFF_VERTEX SPEC_GOURAUD UNLIT _DIFFMODEL_VERTEX _DRAWDIST_ON
     _EMISSION _SPECMODEL_GOURAUD
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
@@ -51,7 +51,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 528be2393a5ddf342819a19cd9cc8896, type: 3}
+        m_Texture: {fileID: 2800000, guid: e0e8b611763f16e43a7382f192f04a2e, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetalMap:
@@ -97,7 +97,7 @@ Material:
     - _NormalMapDepth: 1
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _RenderMode: 0
+    - _RenderMode: 2
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecModel: 0

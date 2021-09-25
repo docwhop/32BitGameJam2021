@@ -35,58 +35,63 @@ public class WeaponHandler : MonoBehaviour
 
 	public bool FirePrimary(Vector3 _weaponEnd, Vector3 _direction, Collider _ignore = null)
 	{
-		if(fireTimer >= GetPrimary().FireRate)
+		return FireSelected(selectedIndex, _weaponEnd, _direction, _ignore);
+	}
+
+	public bool FireSelected(int _index, Vector3 _weaponEnd, Vector3 _direction, Collider _ignore = null)
+	{
+		if (fireTimer >= Weapons[_index].FireRate)
 		{
-			if(GetPrimary().GetType() == typeof(ProjectileWeapon))
+			if (Weapons[_index].GetType() == typeof(ProjectileWeapon))
 			{
-				for (int i = 0; i < GetPrimary().ProjectileCount; i++)
+				for (int i = 0; i < Weapons[_index].ProjectileCount; i++)
 				{
-					Vector3 accuracyRng = new Vector3(Random.Range(-GetPrimary().Accuracy, GetPrimary().Accuracy), Random.Range(-GetPrimary().Accuracy, GetPrimary().Accuracy), Random.Range(-GetPrimary().Accuracy, GetPrimary().Accuracy));
+					Vector3 accuracyRng = new Vector3(Random.Range(-Weapons[_index].Accuracy, Weapons[_index].Accuracy), Random.Range(-Weapons[_index].Accuracy, Weapons[_index].Accuracy), Random.Range(-Weapons[_index].Accuracy, Weapons[_index].Accuracy));
 					accuracyRng *= 0.01f;
-					
+
 					ProjectileManager.Instance.SpawnProjectile
 					(
 						_weaponEnd,
 						_direction + accuracyRng,
-						ParseProjectile(GetPrimary()).Speed,
-						GetPrimary().Range,
-						GetPrimary().Damage, 
-                        GetPrimary().WeaponName,
+						ParseProjectile(Weapons[_index]).Speed,
+						Weapons[_index].Range,
+						Weapons[_index].Damage,
+						Weapons[_index].WeaponName,
 						_ignore
 					);
 				}
 			}
-			else if(GetPrimary().GetType() == typeof(RaycastWeapon))
+			else if (Weapons[_index].GetType() == typeof(RaycastWeapon))
 			{
-				for (int i = 0; i < GetPrimary().ProjectileCount; i++)
+				for (int i = 0; i < Weapons[_index].ProjectileCount; i++)
 				{
-					Vector3 accuracyRng = new Vector3(Random.Range(-GetPrimary().Accuracy, GetPrimary().Accuracy), Random.Range(-GetPrimary().Accuracy, GetPrimary().Accuracy), Random.Range(-GetPrimary().Accuracy, GetPrimary().Accuracy));
+					Vector3 accuracyRng = new Vector3(Random.Range(-Weapons[_index].Accuracy, Weapons[_index].Accuracy), Random.Range(-Weapons[_index].Accuracy, Weapons[_index].Accuracy), Random.Range(-Weapons[_index].Accuracy, Weapons[_index].Accuracy));
 					accuracyRng *= 0.01f;
 
-					if (Physics.Raycast(_weaponEnd, _direction + accuracyRng, out RaycastHit hitInfo, GetPrimary().Range))
+					if (Physics.Raycast(_weaponEnd, _direction + accuracyRng, out RaycastHit hitInfo, Weapons[_index].Range))
 					{
 						if (hitInfo.collider.TryGetComponent(out Health hitHealth) == true)
 						{
-							hitHealth.Damage(GetPrimary().Damage);
+							hitHealth.Damage(Weapons[_index].Damage);
 						}
 					}
 				}
 			}
-			else if(GetPrimary().GetType() == typeof(MeleeWeapon))
+			else if (Weapons[_index].GetType() == typeof(MeleeWeapon))
 			{
-				Collider[] hitCols = Physics.OverlapBox(_weaponEnd, ParseMelee(GetPrimary()).Size, Quaternion.identity);
+				Collider[] hitCols = Physics.OverlapBox(_weaponEnd, ParseMelee(Weapons[_index]).Size, Quaternion.identity);
 
 				for (int i = 0; i < hitCols.Length; i++)
 				{
 					if (hitCols[i].gameObject != gameObject && hitCols[i].TryGetComponent(out Health hitHealth) == true)
 					{
-						hitHealth.Damage(GetPrimary().Damage);
+						hitHealth.Damage(Weapons[_index].Damage);
 					}
 				}
 			}
 
-            AudioManager.Instance.RandomizePitchAndVolume(audioSource);
-            audioSource.PlayOneShot(GetPrimary().FireAudio);
+			AudioManager.Instance.RandomizePitchAndVolume(audioSource);
+			audioSource.PlayOneShot(Weapons[_index].FireAudio);
 
 			fireTimer = 0;
 

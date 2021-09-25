@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cff3cfdd5d3dffb469a08f40c3b08273, type: 3}
+  m_Name: LightMechWeapon
+  m_EditorClassIdentifier: 
+  WeaponName: 0
+  FireAudio: {fileID: 8300000, guid: 657a0f3aa73a0e549b1ed4e8ce2ae879, type: 3}
+  FireRate: 0.1
+  Accuracy: 25
+  ProjectileCount: 3
+  Range: 2
+  Damage: 1
+  Speed: 70
