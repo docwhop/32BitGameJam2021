@@ -49,12 +49,6 @@ public class RangedBeeController : ActorController
 						gunEndIndex = 0;
 					}
 				}
-
-				if (attackTimer >= 1.25f)
-				{
-					attacking = false;
-					attackTimer = 0;
-				}
 			}
 			else
 			{
@@ -115,9 +109,9 @@ public class RangedBeeController : ActorController
 		}
 	}
 
-	public override void AnimEvent()
+	public override void AttackEvent()
 	{
-		attacking = true;
+		attacking = !attacking;
 		attackTimer = 0;
 	}
 

@@ -70,8 +70,19 @@ public class Actor : MonoBehaviour
 		gameObject.SetActive(false);
 	}
 
-	public void ControllerAnimEvent() //This sucks but dont have time for proper solution
+	//This sucks but dont have time for proper solution
+	public void AttackEvent()
 	{
-		Controller.AnimEvent();
+		Controller.AttackEvent();
+	}
+
+	public void LightAttackEvent()
+	{
+		Controller.LightAttackEvent();
+	}
+
+	public void HeavyAttackEvent()
+	{
+		Controller.HeavyAttackEvent();
 	}
 }

@@ -5020,8 +5020,6 @@ Transform:
   m_Children:
   - {fileID: 8473080509103592854}
   - {fileID: 3698336468850003292}
-  - {fileID: 7312249860607974171}
-  - {fileID: 7312249860319367837}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5190,8 +5188,8 @@ MonoBehaviour:
   Data: {fileID: 11400000, guid: 45dbf86bce9df7342bb756b41c800480, type: 2}
   Controller: {fileID: 11400000, guid: 920bf89db971ab54ca121e4f34e9a069, type: 2}
   GunEnds:
-  - {fileID: 7312249860607974171}
-  - {fileID: 7312249860319367837}
+  - {fileID: 3238251521006736146}
+  - {fileID: 320297964033569288}
 --- !u!114 &6420907612933427862
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5848,66 +5846,6 @@ Transform:
   - {fileID: 607249143482031116}
   m_Father: {fileID: 6561108926377048630}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &7312249860319367838
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7312249860319367837}
-  m_Layer: 9
-  m_Name: GunEnd02
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &7312249860319367837
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7312249860319367838}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.75, y: 4, z: 2}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 5931370283155834925}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &7312249860607974164
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7312249860607974171}
-  m_Layer: 9
-  m_Name: GunEnd01
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &7312249860607974171
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7312249860607974164}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.75, y: 4, z: 2}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 5931370283155834925}
-  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7322357244983894118
 GameObject:

@@ -34,7 +34,17 @@ public class ActorController : ScriptableObject
 
 	}
 
-	public virtual void AnimEvent()
+	public virtual void AttackEvent()
+	{
+
+	}
+
+	public virtual void LightAttackEvent()
+	{
+
+	}
+
+	public virtual void HeavyAttackEvent()
 	{
 
 	}

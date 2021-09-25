@@ -90,7 +90,7 @@ public class MeleeBeeController : ActorController
 		}
 	}
 
-	public override void AnimEvent()
+	public override void AttackEvent()
 	{
 		AttachedActor.WeaponHandler.FirePrimary(AttachedActor.transform.position, PlayerDirection());
 	}
