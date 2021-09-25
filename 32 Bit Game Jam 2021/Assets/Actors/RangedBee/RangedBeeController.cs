@@ -12,7 +12,6 @@ public class RangedBeeController : ActorController
 	float newTargetTimer;
 
 	float attackTimer;
-	bool attackTrigger;
 
 	int gunEndIndex;
 
@@ -23,6 +22,10 @@ public class RangedBeeController : ActorController
 		base.Initialize(_attachedActor);
 
 		NewTarget();
+
+		newTargetTimer = 0;
+		attacking = false;
+		attackTimer = 0;
 	}
 
 	public override void FixedUpdate()
@@ -47,7 +50,7 @@ public class RangedBeeController : ActorController
 					}
 				}
 
-				if (attackTimer >= 1.5f)
+				if (attackTimer >= 1)
 				{
 					attacking = false;
 					attackTimer = 0;
@@ -61,6 +64,8 @@ public class RangedBeeController : ActorController
 					attackTimer = 0;
 				}
 			}
+
+			Debug.Log(attacking + " : " + attackTimer);
 
 			if (Vector3.Distance(target, AttachedActor.transform.position) <= 1 || newTargetTimer >= 2)
 			{
@@ -112,7 +117,6 @@ public class RangedBeeController : ActorController
 
 			newTargetTimer = 0;
 			attackTimer = 0;
-			attackTrigger = true;
 		}
 	}
 
