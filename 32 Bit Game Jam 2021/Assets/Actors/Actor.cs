@@ -4,19 +4,21 @@ using UnityEngine;
 
 public class Actor : MonoBehaviour
 {
-	[HideInInspector] public Health Health;
+    [HideInInspector] public Health Health;
 
-	[HideInInspector] public Rigidbody Rbody;
+    [HideInInspector] public Rigidbody Rbody;
 
-	[HideInInspector] public Collider Collider;
+    [HideInInspector] public Collider Collider;
 
-	[HideInInspector] public WeaponHandler WeaponHandler;
+    [HideInInspector] public WeaponHandler WeaponHandler;
 
-	public ActorData Data;
+    public ActorData Data;
 
-	public ActorController Controller;
+    public ActorController Controller;
 
-	public Transform[] GunEnds;
+    public Transform[] GunEnds;
+
+    public bool IsDead { get; set; }
 
 	void Awake()
     {
@@ -66,8 +68,10 @@ public class Actor : MonoBehaviour
 
 	void OnDeath()
 	{
-		//When killed calls this method
-		gameObject.SetActive(false);
+        //When killed calls this method
+        Controller.DeathEvent();
+        IsDead = true;
+		//gameObject.SetActive(false); 
 	}
 
 	//This sucks but dont have time for proper solution

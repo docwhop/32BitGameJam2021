@@ -24,6 +24,9 @@ ModelImporter:
   - first:
       74: 7184904166862144109
     second: take_attack
+  - first:
+      74: -2309065770043309678
+    second: take_death (1)
   externalObjects:
   - first:
       type: UnityEngine:Material
@@ -92,11 +95,11 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 1
     - serializedVersion: 16
-      name: take_fly_forwards
-      takeName: take_fly_forwards
+      name: take_death (1)
+      takeName: take_death
       internalID: 0
-      firstFrame: 54
-      lastFrame: 83
+      firstFrame: 178
+      lastFrame: 227
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

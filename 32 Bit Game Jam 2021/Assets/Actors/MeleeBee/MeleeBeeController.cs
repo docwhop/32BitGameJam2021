@@ -23,7 +23,7 @@ public class MeleeBeeController : ActorController
 
 	public override void FixedUpdate()
 	{
-		if(CanSeePlayer() == true)
+		if(CanSeePlayer() == true && !AttachedActor.IsDead)
 		{
 			timer += Time.deltaTime;
 
@@ -95,6 +95,18 @@ public class MeleeBeeController : ActorController
 		AttachedActor.WeaponHandler.FirePrimary(AttachedActor.transform.position, PlayerDirection());
 	}
 
+    public override void DeathEvent()
+    {
+        if (!Animator.GetCurrentAnimatorStateInfo(0).IsName("take_death"))
+        {
+            // not the best. shifts the collider to align with character death so they don't fall through the floor.
+            Animator.SetTrigger("Died");
+            AttachedActor.GetComponent<Rigidbody>().useGravity = true;
+            CapsuleCollider collider = AttachedActor.GetComponent<CapsuleCollider>();
+            collider.center = new Vector3(collider.center.x, collider.center.y - 1, collider.center.z); 
+        }
+    }
+
 	void NewTarget()
 	{
 		target = Player.position;
@@ -131,6 +143,10 @@ public class MeleeBeeController : ActorController
 		//Stops flying enemy from getting glitched on the ground or walls
 		if (collision.gameObject.layer == LayerMask.NameToLayer("Ground") || collision.gameObject.layer == LayerMask.NameToLayer("Default"))
 		{
+            if (AttachedActor.IsDead)
+            {
+                AttachedActor.GetComponent<Rigidbody>().useGravity = false;
+            }
 			NewTarget(); //Not great
 
 			timer = 0;

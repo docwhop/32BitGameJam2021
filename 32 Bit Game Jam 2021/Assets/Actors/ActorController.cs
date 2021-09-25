@@ -49,6 +49,11 @@ public class ActorController : ScriptableObject
 
 	}
 
+    public virtual void DeathEvent()
+    {
+
+    }
+
 	public Vector3 PlayerDirection()
 	{
 		return (Player.position - AttachedActor.transform.position).normalized;

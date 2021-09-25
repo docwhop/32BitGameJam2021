@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a9fdb278d97dc545903ce89a6498bb1, type: 3}
   m_Name: MechBeeData
   m_EditorClassIdentifier: 
-  acceleration: 0
-  maxSpeed: 0
+  acceleration: 1
+  maxSpeed: 1
