@@ -59,7 +59,7 @@ public class WeaponSwitcher : MonoBehaviour
         EventManager.weaponChangedEvent -= SwapWeaponModel;
     }
     
-    public void SwapWeaponModel(WeaponName name)
+    public void SwapWeaponModel(Weapon weapon)
     {
         Debug.Log("SwapWeaponModel called.");
         if(currentWeapon != weaponHandler.GetPrimary().WeaponName)

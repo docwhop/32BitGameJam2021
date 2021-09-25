@@ -49,14 +49,14 @@ public class WeaponHandler : MonoBehaviour
 					Vector3 accuracyRng = new Vector3(Random.Range(-Weapons[_index].Accuracy, Weapons[_index].Accuracy), Random.Range(-Weapons[_index].Accuracy, Weapons[_index].Accuracy), Random.Range(-Weapons[_index].Accuracy, Weapons[_index].Accuracy));
 					accuracyRng *= 0.01f;
 
-					ProjectileManager.Instance.SpawnProjectile
-					(
-						_weaponEnd,
-						_direction + accuracyRng,
-						ParseProjectile(Weapons[_index]).Speed,
-						Weapons[_index].Range,
-						Weapons[_index].Damage,
-						Weapons[_index].WeaponName,
+                    ProjectileManager.Instance.SpawnProjectile
+                    (
+                        _weaponEnd,
+                        _direction + accuracyRng,
+                        ParseProjectile(Weapons[_index]).Speed,
+                        Weapons[_index].Range,
+                        Weapons[_index].Damage,
+                        Weapons[_index].WeaponName,
 						_ignore
 					);
 				}
@@ -116,7 +116,7 @@ public class WeaponHandler : MonoBehaviour
 		}
 
 		fireTimer = 0;
-        EventManager.Instance.WeaponChanged(Weapons[selectedIndex].WeaponName);
+        EventManager.Instance.WeaponChanged(Weapons[selectedIndex]);
     }
 
 	public void NextWeapon()
@@ -129,7 +129,7 @@ public class WeaponHandler : MonoBehaviour
 		}
 
 		fireTimer = 0;
-        EventManager.Instance.WeaponChanged(Weapons[selectedIndex].WeaponName);
+        EventManager.Instance.WeaponChanged(Weapons[selectedIndex]);
     }
 
     public void PreviousWeapon()
@@ -144,7 +144,7 @@ public class WeaponHandler : MonoBehaviour
         }
 
         fireTimer = 0;
-        EventManager.Instance.WeaponChanged(Weapons[selectedIndex].WeaponName);
+        EventManager.Instance.WeaponChanged(Weapons[selectedIndex]);
     }
 
 	ProjectileWeapon ParseProjectile(Weapon _weapon)

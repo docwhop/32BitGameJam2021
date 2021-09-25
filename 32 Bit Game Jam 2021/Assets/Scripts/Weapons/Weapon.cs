@@ -16,7 +16,9 @@ public class Weapon : ScriptableObject
 {
     public WeaponName WeaponName;
 
-	public AudioClip FireAudio;
+    public int MagazineSize;
+
+    public AudioClip FireAudio;
 
 	public float FireRate;
 

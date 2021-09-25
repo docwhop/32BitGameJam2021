@@ -44,21 +44,22 @@ public class GameUIPanel : MonoBehaviour
         
     }
 
-    public void SwitchWeaponIcon(WeaponName name)
+    public void SwitchWeaponIcon(Weapon weapon)
     {
-        if(name == WeaponName.NeedleGun)
+        if(weapon.WeaponName == WeaponName.NeedleGun)
         {
             weaponImage.sprite = beeBuster;
         }
-        else if(name == WeaponName.HoneyLauncher)
+        else if(weapon.WeaponName == WeaponName.HoneyLauncher)
         {
             weaponImage.sprite = honeyLauncher;
         }
-        else if(name == WeaponName.Pollenator)
+        else if(weapon.WeaponName == WeaponName.Pollenator)
         {
             weaponImage.sprite = pollenator;
         }
 
+        ammoText.text = weapon.MagazineSize + "/" + weapon.MagazineSize;
 
     }
 }

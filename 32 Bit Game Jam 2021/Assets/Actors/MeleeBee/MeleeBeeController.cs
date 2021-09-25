@@ -103,7 +103,7 @@ public class MeleeBeeController : ActorController
             Animator.SetTrigger("Died");
             AttachedActor.GetComponent<Rigidbody>().useGravity = true;
             CapsuleCollider collider = AttachedActor.GetComponent<CapsuleCollider>();
-            collider.center = new Vector3(collider.center.x, collider.center.y - 1, collider.center.z); 
+            collider.center = new Vector3(collider.center.x, 1.86f, collider.center.z); 
         }
     }
 
