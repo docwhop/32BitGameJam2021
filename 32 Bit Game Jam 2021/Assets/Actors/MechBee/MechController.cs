@@ -42,7 +42,7 @@ public class MechController : ActorController
 					//Back
 					Animator.SetInteger("MoveState", 3);
 
-					direction = Vector3.MoveTowards(AttachedActor.transform.forward, PlayerDirection(), 1.5f * Time.fixedDeltaTime).normalized;
+					direction = Vector3.MoveTowards(AttachedActor.transform.forward, PlayerDirection(), 2 * Time.fixedDeltaTime).normalized;
 					direction.y = 0;
 
 					AttachedActor.transform.forward = direction;
