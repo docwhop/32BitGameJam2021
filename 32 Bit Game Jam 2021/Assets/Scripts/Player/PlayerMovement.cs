@@ -117,5 +117,10 @@ public class PlayerMovement : MonoBehaviour
             Vector3 spawnPoint = GameManager.Instance.GetSpawnpoint(hit);
             transform.position = new Vector3(spawnPoint.x, spawnPoint.y, spawnPoint.z);
         }
+        if(hit.gameObject.tag == "MovingPlatform")
+        {
+            transform.parent = hit.gameObject.transform; 
+        }
+            
     }
 }

@@ -7,6 +7,7 @@ public class Pause : MonoBehaviour
 {
     [SerializeField] private GameObject pausePanel;
     [SerializeField] private GameObject optionsPanel;
+    [SerializeField] private GameObject gameOverPanel;
     public AudioMixer masterMixer;
 
     void Start()

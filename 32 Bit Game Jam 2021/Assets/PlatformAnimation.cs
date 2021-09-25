@@ -19,6 +19,6 @@ public class PlatformAnimation : MonoBehaviour
         counter += Time.deltaTime;
         output = Mathf.Sin(counter);
         output *= movementAmount;
-        transform.position = new Vector3(transform.position.x, transform.position.y + output, transform.position.z);
+        transform.position = new Vector3(transform.position.x + output, transform.position.y, transform.position.z);
     }
 }
