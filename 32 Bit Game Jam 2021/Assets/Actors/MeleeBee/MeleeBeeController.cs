@@ -47,7 +47,7 @@ public class MeleeBeeController : ActorController
 				}
 			}
 
-			direction = Vector3.Lerp(direction, (target - AttachedActor.transform.position).normalized, 1 * Time.fixedDeltaTime);
+			direction = Vector3.Lerp(direction, (target - AttachedActor.transform.position).normalized, 1 * Time.deltaTime);
 
 			if (direction != Vector3.zero) //Stops unnecessary movement
 			{

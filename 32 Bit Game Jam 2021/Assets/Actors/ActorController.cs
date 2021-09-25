@@ -48,13 +48,7 @@ public class ActorController : ScriptableObject
 	{
 		if(Vector3.Distance(AttachedActor.transform.position, Player.position) <= 60)
 		{
-			if(Physics.Raycast(AttachedActor.transform.position, PlayerDirection(), out RaycastHit raycastHit, 60) == true)
-			{
-				if(raycastHit.transform.tag == "Player")
-				{
-					return true;
-				}
-			}
+			return true;
 		}
 
 		return false;

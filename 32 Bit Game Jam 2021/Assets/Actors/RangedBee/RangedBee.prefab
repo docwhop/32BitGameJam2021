@@ -4996,8 +4996,8 @@ GameObject:
   - component: {fileID: 6420907612933427865}
   - component: {fileID: 6420907612933427866}
   - component: {fileID: 6420907612933427867}
-  - component: {fileID: 6420907612933427860}
   - component: {fileID: 6420907612933427861}
+  - component: {fileID: 6420907612933427860}
   - component: {fileID: 6420907612933427862}
   - component: {fileID: 6420907612933427864}
   m_Layer: 9
@@ -5151,6 +5151,26 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &6420907612933427861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6420907612933427863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d05db3488cbc2b74d9b42c2c94cb6469, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 3
+  maxHp: 3
+  OnDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &6420907612933427860
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5172,26 +5192,6 @@ MonoBehaviour:
   GunEnds:
   - {fileID: 7312249860607974171}
   - {fileID: 7312249860319367837}
---- !u!114 &6420907612933427861
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6420907612933427863}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d05db3488cbc2b74d9b42c2c94cb6469, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hp: 3
-  maxHp: 3
-  OnDamage:
-    m_PersistentCalls:
-      m_Calls: []
-  OnDeath:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &6420907612933427862
 MonoBehaviour:
   m_ObjectHideFlags: 0

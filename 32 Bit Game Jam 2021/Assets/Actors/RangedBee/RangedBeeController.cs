@@ -32,9 +32,9 @@ public class RangedBeeController : ActorController
 	{
 		if(CanSeePlayer() == true)
 		{
-			newTargetTimer += Time.fixedDeltaTime;
+			newTargetTimer += Time.deltaTime;
 
-			attackTimer += Time.fixedDeltaTime;
+			attackTimer += Time.deltaTime;
 
 			if (attacking == true)
 			{
@@ -72,7 +72,7 @@ public class RangedBeeController : ActorController
 				newTargetTimer = 0;
 			}
 
-			direction = Vector3.Lerp(direction, (target - AttachedActor.transform.position).normalized, 1 * Time.fixedDeltaTime);
+			direction = Vector3.Lerp(direction, (target - AttachedActor.transform.position).normalized, 1 * Time.deltaTime);
 
 			if (direction != Vector3.zero) //Stops unnecessary movement
 			{
