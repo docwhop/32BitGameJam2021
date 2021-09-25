@@ -5747,6 +5747,7 @@ MonoBehaviour:
   honeyLauncher: {fileID: 6556154425751224059}
   pollenator: {fileID: 4587786054503143318}
   weaponHandler: {fileID: 103180670}
+  armsParent: {fileID: 0}
 --- !u!4 &1268833587 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 662729830969547631, guid: 5f6962fd6ebf414438d15e10f61edd16, type: 3}
