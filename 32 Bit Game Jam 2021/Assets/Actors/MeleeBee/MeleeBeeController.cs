@@ -109,7 +109,7 @@ public class MeleeBeeController : ActorController
 			AttachedActor.Rbody.velocity = Vector3.zero;
 			AttachedActor.Rbody.angularVelocity = Vector3.zero;
 			AttachedActor.Rbody.freezeRotation = true;
-			AttachedActor.Rbody.AddForce(Vector3.down * 10, ForceMode.Impulse);
+			AttachedActor.Rbody.AddForce(Vector3.down * 25, ForceMode.Impulse);
 
 			CapsuleCollider collider = AttachedActor.GetComponent<CapsuleCollider>();
 			collider.center = new Vector3(collider.center.x, 1.86f, collider.center.z);
