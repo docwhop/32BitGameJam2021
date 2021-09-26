@@ -35,7 +35,7 @@ public class Actor : MonoBehaviour
 		Health.AddDamageCallback(OnDamage);
 		Health.AddDeathCallback(OnDeath);
 
-		Initialize(Data, Controller);
+		Initialize(Instantiate(Data), Instantiate(Controller));
     }
 
 	public void Initialize(ActorData _data, ActorController _controller)
