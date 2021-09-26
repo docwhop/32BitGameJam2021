@@ -26,4 +26,15 @@ public class ActorManager : MonoBehaviour
 			pool[i] = transform.GetChild(i).GetComponent<Actor>();
 		}
 	}
+
+	void FixedUpdate()
+	{
+		for (int i = 0; i < pool.Length; i++)
+		{
+			if(Vector3.Distance(pool[i].transform.position, Camera.main.transform.position) >= 100 && pool[i].IsDead == true)
+			{
+				pool[i].gameObject.SetActive(false);
+			}
+		}	
+	}
 }

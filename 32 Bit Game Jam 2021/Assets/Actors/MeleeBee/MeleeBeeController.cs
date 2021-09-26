@@ -99,13 +99,21 @@ public class MeleeBeeController : ActorController
     {
         if (!Animator.GetCurrentAnimatorStateInfo(0).IsName("take_death"))
         {
-            // not the best. shifts the collider to align with character death so they don't fall through the floor.
-            Animator.SetTrigger("Died");
-            AttachedActor.GetComponent<Rigidbody>().useGravity = true;
-            CapsuleCollider collider = AttachedActor.GetComponent<CapsuleCollider>();
-            collider.center = new Vector3(collider.center.x, 1.86f, collider.center.z); 
-        }
-    }
+			// not the best. shifts the collider to align with character death so they don't fall through the floor.
+			Animator.SetTrigger("Died");
+
+			AttachedActor.Rbody.velocity = Vector3.zero;
+			AttachedActor.Rbody.AddForce(Vector3.down * 10, ForceMode.Impulse);
+
+			CapsuleCollider collider = AttachedActor.GetComponent<CapsuleCollider>();
+			collider.center = new Vector3(collider.center.x, 1.86f, collider.center.z);
+
+			AttachedActor.gameObject.layer = LayerMask.NameToLayer("DeadEnemy");
+
+			//Improves performance
+			AttachedActor.enabled = false;
+		}
+	}
 
 	void NewTarget()
 	{
