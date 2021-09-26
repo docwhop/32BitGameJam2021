@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: LightMechWeapon
   m_EditorClassIdentifier: 
   WeaponName: 0
-  FireAudio: {fileID: 8300000, guid: 657a0f3aa73a0e549b1ed4e8ce2ae879, type: 3}
+  MagazineSize: 0
+  FireAudio: {fileID: 8300000, guid: 78479cff5145154498209fb50c4f74d3, type: 3}
   FireRate: 0.1
   Accuracy: 25
   ProjectileCount: 3
