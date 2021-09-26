@@ -17,6 +17,10 @@ public class EventManager : MonoBehaviour
     public delegate void OnWeaponFiredDelegate();
     public static event OnWeaponFiredDelegate weaponFiredEvent;
 
+    public delegate void OnPlayerDiedDelegate();
+    public static event OnPlayerDiedDelegate playerDiedEvent;
+
+
 
     private static EventManager _instance;
 
@@ -55,6 +59,12 @@ public class EventManager : MonoBehaviour
     public void WeaponFired()
     {
         weaponFiredEvent?.Invoke();
+    }
+
+    public void PlayerDied()
+    {
+        playerDiedEvent?.Invoke();
+
     }
 
 }

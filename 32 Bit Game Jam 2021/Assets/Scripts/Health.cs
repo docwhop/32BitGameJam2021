@@ -38,6 +38,7 @@ public class Health : MonoBehaviour
 		{
 			//If death callback isnt null, invoke
 			OnDeath?.Invoke();
+            EventManager.Instance.PlayerDied();
 		}
 	}
 
