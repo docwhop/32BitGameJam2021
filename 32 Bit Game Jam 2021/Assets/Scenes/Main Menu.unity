@@ -3220,7 +3220,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2138254199}
         m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
-        m_MethodName: LoadGameplayTestbed
+        m_MethodName: LoadLevelDesignOne
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
