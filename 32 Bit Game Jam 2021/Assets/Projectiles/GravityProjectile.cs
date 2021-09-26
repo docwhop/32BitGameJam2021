@@ -26,15 +26,18 @@ public class GravityProjectile : Projectile
 
 		if (TTL >= Range)
 		{
+			if (Explodes == true)
+			{
+				ExplosionManager.Instance.SpawnExplosion(transform.position, 1, 10, 3, 5);
+			}
+
 			TTL = 0;
 			gameObject.SetActive(false);
-
-			//Spawn explosion
 		}
 	}
 
 	public override void OnCollisionEnter(Collision collision)
 	{
-		//Spawn explosion
+
 	}
 }

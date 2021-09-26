@@ -14,6 +14,8 @@ public class Projectile : MonoBehaviour
 
 	protected float TTL;
 
+	public bool Explodes;
+
 	public virtual void Initialize(Vector3 _position, Vector3 _direction, float _speed, float _range, int _damage)
 	{
 		transform.position = _position;
@@ -37,6 +39,11 @@ public class Projectile : MonoBehaviour
 
 		if(TTL >= Range)
 		{
+			if(Explodes == true)
+			{
+				ExplosionManager.Instance.SpawnExplosion(transform.position, 1, 10, 3, 5);
+			}
+
 			TTL = 0;
 			gameObject.SetActive(false);
 		}
@@ -55,6 +62,11 @@ public class Projectile : MonoBehaviour
 		if(collision.gameObject.GetComponent<Health>())
 		{
 			collision.gameObject.GetComponent<Health>().Damage(Damage);
+		}
+
+		if (Explodes == true)
+		{
+			ExplosionManager.Instance.SpawnExplosion(transform.position, 1, 10, 3, 5);
 		}
 
 		gameObject.SetActive(false);
