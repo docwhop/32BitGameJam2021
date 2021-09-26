@@ -359,8 +359,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d05db3488cbc2b74d9b42c2c94cb6469, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 10
-  maxHp: 10
+  hp: 5
+  maxHp: 5
   OnDamage:
     m_PersistentCalls:
       m_Calls: []
@@ -388,7 +388,7 @@ MonoBehaviour:
   gravity: -19.62
   jumpHeight: 3
   hoverTime: 1
-  hoverSource: {fileID: 0}
+  hoverSource: {fileID: 4550687712669905676}
   hoverClips:
   - {fileID: 8300000, guid: 1ae6c1cf638126b4d8c83d480b43121c, type: 3}
   - {fileID: 8300000, guid: c8b61925fb72edc4ebb6ededfedbd323, type: 3}
@@ -553,7 +553,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   groundDistance: 0.4
-  source: {fileID: 0}
+  source: {fileID: 4550687712669905676}
   land: {fileID: 8300000, guid: ead0d80d311fd9d489211fe465624dc1, type: 3}
   alreadyPlayed: 0
 --- !u!1 &4550687712995933254
@@ -779,7 +779,7 @@ MonoBehaviour:
   honeyLauncher: {fileID: 7339576479607121032}
   pollenator: {fileID: 39509031423593957}
   weaponHandler: {fileID: 4550687712669905677}
-  armsParent: {fileID: 0}
+  armsParent: {fileID: 4550687712124768336}
 --- !u!1 &7339576479607121032
 GameObject:
   m_ObjectHideFlags: 0

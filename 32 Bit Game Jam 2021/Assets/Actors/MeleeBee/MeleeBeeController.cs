@@ -27,15 +27,15 @@ public class MeleeBeeController : ActorController
 		{
 			timer += Time.deltaTime;
 
-			if (Vector3.Distance(AttachedActor.transform.position, Player.transform.position) <= AttackRange) //Attack
+			if (Vector3.Distance(AttachedActor.transform.position, PlayerPosition()) <= AttackRange) //Attack
 			{
 				Animator.SetTrigger("Attack");
 
 				direction = Vector3.zero;
 			}
-			else if (Vector3.Distance(AttachedActor.transform.position, Player.transform.position) <= ChargeRange) //Charge
+			else if (Vector3.Distance(AttachedActor.transform.position, PlayerPosition()) <= ChargeRange) //Charge
 			{
-				direction = PlayerDirection();
+				direction = GetDirection(PlayerPosition() + Vector3.down * 2.2f);
 			}
 			else //Hover
 			{
@@ -54,7 +54,7 @@ public class MeleeBeeController : ActorController
 				AttachedActor.Rbody.MovePosition(AttachedActor.transform.position + (direction * AttachedActor.Data.Acceleration));
 			}
 
-			AttachedActor.transform.LookAt(Player);
+			AttachedActor.transform.LookAt(PlayerPosition());
 
 			if (AttachedActor.Rbody.velocity.magnitude > AttachedActor.Data.MaxSpeed) //Stops velocity going crazy
 			{
@@ -102,13 +102,14 @@ public class MeleeBeeController : ActorController
 			// not the best. shifts the collider to align with character death so they don't fall through the floor.
 			Animator.SetTrigger("Died");
 
+			AttachedActor.gameObject.layer = LayerMask.NameToLayer("DeadEnemy");
+
 			AttachedActor.Rbody.velocity = Vector3.zero;
+			AttachedActor.Rbody.freezeRotation = true;
 			AttachedActor.Rbody.AddForce(Vector3.down * 10, ForceMode.Impulse);
 
 			CapsuleCollider collider = AttachedActor.GetComponent<CapsuleCollider>();
 			collider.center = new Vector3(collider.center.x, 1.86f, collider.center.z);
-
-			AttachedActor.gameObject.layer = LayerMask.NameToLayer("DeadEnemy");
 
 			//Improves performance
 			AttachedActor.enabled = false;
@@ -117,7 +118,7 @@ public class MeleeBeeController : ActorController
 
 	void NewTarget()
 	{
-		target = Player.position;
+		target = PlayerPosition();
 
 		int yMin = 0;
 		int yMax = 10;

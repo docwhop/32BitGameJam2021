@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class ActorController : ScriptableObject
 {
-	[HideInInspector] public Transform Player;
+	[HideInInspector] public Collider Player;
 
 	protected Actor AttachedActor;
 
 	protected Animator Animator;
+
+	public float SightRange;
 
 	public virtual void Initialize(Actor _attachedActor)
 	{
@@ -16,7 +18,7 @@ public class ActorController : ScriptableObject
 
 		Animator = AttachedActor.GetComponent<Animator>();
 
-		Player = Camera.main.transform.parent;
+		Player = Camera.main.transform.parent.GetComponent<Collider>();
 	}
 
 	public virtual void Update()
@@ -54,14 +56,24 @@ public class ActorController : ScriptableObject
 
     }
 
+	public Vector3 GetDirection(Vector3 position)
+	{
+		return (position - AttachedActor.transform.position).normalized;
+	}
+
+	public Vector3 PlayerPosition()
+	{
+		return Player.bounds.center;
+	}
+
 	public Vector3 PlayerDirection()
 	{
-		return (Player.position - AttachedActor.transform.position).normalized;
+		return GetDirection(PlayerPosition());
 	}
 
 	public bool CanSeePlayer()
 	{
-		if(Vector3.Distance(AttachedActor.transform.position, Player.position) <= 80)
+		if(Vector3.Distance(AttachedActor.transform.position, PlayerPosition()) <= SightRange)
 		{
 			return true;
 		}

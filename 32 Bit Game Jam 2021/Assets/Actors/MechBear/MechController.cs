@@ -30,7 +30,7 @@ public class MechController : ActorController
 				AttachedActor.transform.forward = direction;
 			}
 
-			if (Vector3.Distance(Player.position, AttachedActor.transform.position) <= 20)
+			if (Vector3.Distance(PlayerPosition(), AttachedActor.transform.position) <= 20)
 			{
 				Animator.SetTrigger("MeleeAttack");
 			}
@@ -41,7 +41,7 @@ public class MechController : ActorController
 				if (angle <= 25 && angle >= -25)
 				{
 					//Front
-					if (Vector3.Distance(Player.position, AttachedActor.transform.position) <= 50)
+					if (Vector3.Distance(PlayerPosition(), AttachedActor.transform.position) <= 50)
 					{
 						Animator.SetTrigger("LightAttack");
 					}
@@ -73,13 +73,10 @@ public class MechController : ActorController
 			// not the best. shifts the collider to align with character death so they don't fall through the floor.
 			Animator.SetTrigger("Died");
 
-			//AttachedActor.Rbody.velocity = Vector3.zero;
-			//AttachedActor.Rbody.AddForce(Vector3.down * 10, ForceMode.Impulse);
-
-			//CapsuleCollider collider = AttachedActor.GetComponent<CapsuleCollider>();
-			//collider.center = new Vector3(collider.center.x, 1.86f, collider.center.z);
-
 			AttachedActor.gameObject.layer = LayerMask.NameToLayer("DeadEnemy");
+
+			AttachedActor.Rbody.velocity = Vector3.zero;
+			AttachedActor.Rbody.freezeRotation = true;
 
 			//Improves performance
 			AttachedActor.enabled = false;
@@ -98,6 +95,6 @@ public class MechController : ActorController
 
 	public override void HeavyAttackEvent()
 	{
-		AttachedActor.WeaponHandler.FireSelected(2, AttachedActor.GunEnds[2].position, -AttachedActor.GunEnds[2].right, AttachedActor.Collider);
+		AttachedActor.WeaponHandler.FireSelected(2, AttachedActor.GunEnds[2].position, -AttachedActor.GunEnds[2].right + Vector3.down * 0.1f, AttachedActor.Collider);
 	}
 }

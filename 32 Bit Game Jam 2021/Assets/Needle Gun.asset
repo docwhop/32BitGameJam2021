@@ -20,4 +20,4 @@ MonoBehaviour:
   ProjectileCount: 1
   Range: 1
   Damage: 1
-  Speed: 50
+  Speed: 100

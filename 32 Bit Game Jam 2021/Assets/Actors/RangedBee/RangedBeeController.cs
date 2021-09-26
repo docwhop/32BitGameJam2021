@@ -38,7 +38,7 @@ public class RangedBeeController : ActorController
 
 			if (attacking == true)
 			{
-				Vector3 gunDir = (Player.position - AttachedActor.GunEnds[gunEndIndex].position).normalized;
+				Vector3 gunDir = (PlayerPosition() - AttachedActor.GunEnds[gunEndIndex].position).normalized;
 
 				if (AttachedActor.WeaponHandler.FirePrimary(AttachedActor.GunEnds[gunEndIndex].position, gunDir, AttachedActor.Collider) == true)
 				{
@@ -73,7 +73,7 @@ public class RangedBeeController : ActorController
 				AttachedActor.Rbody.MovePosition(AttachedActor.transform.position + (direction * AttachedActor.Data.Acceleration));
 			}
 
-			AttachedActor.transform.LookAt(Player);
+			AttachedActor.transform.LookAt(PlayerPosition());
 
 			if (AttachedActor.Rbody.velocity.magnitude > AttachedActor.Data.MaxSpeed) //Stops velocity going crazy
 			{
@@ -122,13 +122,14 @@ public class RangedBeeController : ActorController
 			// not the best. shifts the collider to align with character death so they don't fall through the floor.
 			Animator.SetTrigger("Died");
 
+			AttachedActor.gameObject.layer = LayerMask.NameToLayer("DeadEnemy");
+
 			AttachedActor.Rbody.velocity = Vector3.zero;
+			AttachedActor.Rbody.freezeRotation = true;
 			AttachedActor.Rbody.AddForce(Vector3.down * 10, ForceMode.Impulse);
 
 			CapsuleCollider collider = AttachedActor.GetComponent<CapsuleCollider>();
 			collider.center = new Vector3(collider.center.x, 1.86f, collider.center.z);
-
-			AttachedActor.gameObject.layer = LayerMask.NameToLayer("DeadEnemy");
 
 			//Improves performance
 			AttachedActor.enabled = false;
@@ -137,7 +138,7 @@ public class RangedBeeController : ActorController
 
 	void NewTarget()
 	{
-		target = Player.position;
+		target = PlayerPosition();
 
 		int yMin = 10;
 		int yMax = 15;

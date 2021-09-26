@@ -11,6 +11,8 @@ public class FirstPersonShoot : MonoBehaviour
 	public Transform[] FirePoints;
 	int firePointIndex;
 
+	Collider col;
+
     private void OnEnable()
     {
         //EventManager.weaponChangedEvent += AssignFirePoints; 
@@ -26,13 +28,15 @@ public class FirstPersonShoot : MonoBehaviour
 		cam = GetComponentInChildren<Camera>();
 
 		weaponHandler = GetComponent<WeaponHandler>();
+
+		col = GetComponent<Collider>();
 	}
 
 	void Update()
     {
         if (Input.GetButton("Fire1") && !GameManager.Instance.IsGamePaused)
         {
-			if(weaponHandler.FirePrimary(FirePoints[firePointIndex].position, ProjectileDirection()) == true)
+			if(weaponHandler.FirePrimary(FirePoints[firePointIndex].position, ProjectileDirection(), col) == true)
 			{
 				firePointIndex++;
 

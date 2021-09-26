@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3868081633958596670}
   - component: {fileID: 8967320044451972498}
   - component: {fileID: 637298809533600673}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4816,7 +4816,7 @@ GameObject:
   - component: {fileID: 4859480097785955892}
   - component: {fileID: 2542654760415043221}
   - component: {fileID: -5546609352002662917}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cannon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4847,7 +4847,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4123532834907357162}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1.5, y: 1.5, z: 2.5}
@@ -4892,7 +4892,7 @@ GameObject:
   - component: {fileID: 8750325897465909962}
   - component: {fileID: 5674742924346416495}
   - component: {fileID: 7576263856969001381}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: prp_projectile_cannon
   m_TagString: Untagged
   m_Icon: {fileID: 0}

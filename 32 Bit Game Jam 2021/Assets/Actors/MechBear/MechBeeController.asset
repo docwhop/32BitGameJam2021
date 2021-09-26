@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: MechBeeController
   m_EditorClassIdentifier: 
   Player: {fileID: 0}
+  SightRange: 80

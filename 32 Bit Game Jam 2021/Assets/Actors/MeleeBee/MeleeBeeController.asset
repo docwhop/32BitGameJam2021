@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: MeleeBeeController
   m_EditorClassIdentifier: 
   Player: {fileID: 0}
-  AttackRange: 5
+  SightRange: 80
+  AttackRange: 4
   ChargeRange: 20

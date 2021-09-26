@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: RangedBeeController
   m_EditorClassIdentifier: 
   Player: {fileID: 0}
+  SightRange: 80

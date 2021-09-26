@@ -16,6 +16,8 @@ public class Projectile : MonoBehaviour
 
 	public bool Explodes;
 
+	Vector3 previousPosition;
+
 	public virtual void Initialize(Vector3 _position, Vector3 _direction, float _speed, float _range, int _damage)
 	{
 		transform.position = _position;
@@ -31,6 +33,8 @@ public class Projectile : MonoBehaviour
 		GetComponent<Collider>().enabled = true;
 
 		TTL = 0;
+
+		previousPosition = transform.position;
 	}
 
 	public virtual void Update()
@@ -45,11 +49,43 @@ public class Projectile : MonoBehaviour
 			}
 
 			TTL = 0;
+
 			gameObject.SetActive(false);
 		}
 
 		transform.position = transform.position + (Direction * Speed * Time.deltaTime);
 		transform.forward = Direction;
+
+		if(Speed > 100)
+		{
+			PreciseCollision();
+		}
+
+		previousPosition = transform.position;
+	}
+
+	void PreciseCollision()
+	{
+		//Bit shift to make a layer mask that excludes projectiles
+		int projectileMask = 1 << 7;
+		projectileMask = ~projectileMask;
+
+		if (Physics.Raycast(transform.position, (previousPosition - transform.position).normalized, out RaycastHit hit, Vector3.Distance(previousPosition, transform.position), projectileMask))
+		{
+			if (hit.transform.GetComponent<Health>())
+			{
+				hit.transform.GetComponent<Health>().Damage(Damage);
+			}
+
+			if (Explodes == true)
+			{
+				ExplosionManager.Instance.SpawnExplosion(transform.position, 1, 10, 3, 5);
+			}
+
+			Debug.Log(hit.transform.name);
+
+			gameObject.SetActive(false);
+		}
 	}
 
 	public void IgnoreCollider(Collider col)
@@ -57,11 +93,11 @@ public class Projectile : MonoBehaviour
 		Physics.IgnoreCollision(GetComponent<Collider>(), col, true);
 	}
 
-	public virtual void OnCollisionEnter(Collision collision)
+	public virtual void OnTriggerEnter(Collider other)
 	{
-		if(collision.gameObject.GetComponent<Health>())
+		if (other.gameObject.GetComponent<Health>())
 		{
-			collision.gameObject.GetComponent<Health>().Damage(Damage);
+			other.gameObject.GetComponent<Health>().Damage(Damage);
 		}
 
 		if (Explodes == true)
