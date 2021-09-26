@@ -10,6 +10,8 @@ public class Explosion : MonoBehaviour
 
 	[SerializeField] float min;
 	[SerializeField] float max;
+    [SerializeField]
+    private AudioSource source;
 
 	bool canDamage;
 
@@ -18,7 +20,8 @@ public class Explosion : MonoBehaviour
 	void Awake()
 	{
 		col = GetComponent<Collider>();
-	}
+        source.Play();
+    }
 
 	public void Initialize(Vector3 pos, int dmg, float sped, float minSize, float maxSize)
 	{
