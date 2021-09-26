@@ -21,6 +21,9 @@ public class AudioManager : MonoBehaviour
     [SerializeField]
     private AudioSource uiSource;
 
+    [SerializeField]
+    private AudioSource explosionSource;
+
     public float LowPitchRange = 1f;
     public float HighPitchRange = 1.2f;
     public float LowVolumeRange = .8f;
@@ -89,4 +92,9 @@ public class AudioManager : MonoBehaviour
         randomSource.Stop();
     }
         
+    public void PlayExplosion(AudioClip clip)
+    {
+        explosionSource.clip = clip;
+        AudioSource.PlayClipAtPoint(clip, transform.position);
+    }
 }
