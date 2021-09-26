@@ -38,8 +38,8 @@ public class Explosion : MonoBehaviour
 		transform.rotation = Quaternion.identity;
 		transform.localScale = new Vector3(min, min, min);
 
-
         canDamage = true;
+		col.enabled = true;
 	}
 
 	void Update()

@@ -30,7 +30,7 @@ public class GravityProjectile : Projectile
 		{
 			if (Explodes == true)
 			{
-				ExplosionManager.Instance.SpawnExplosion(transform.position, 1, 10, 3, 5);
+				Explosion();
 			}
 
 			TTL = 0;

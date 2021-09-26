@@ -4881,6 +4881,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Explodes: 1
+  ExplosionMin: 4
+  ExplosionMax: 6
 --- !u!1 &8224900745123268720
 GameObject:
   m_ObjectHideFlags: 0

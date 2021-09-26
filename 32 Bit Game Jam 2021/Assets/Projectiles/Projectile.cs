@@ -15,6 +15,8 @@ public class Projectile : MonoBehaviour
 	protected float TTL;
 
 	public bool Explodes;
+	public float ExplosionMin;
+	public float ExplosionMax;
 
 	Vector3 previousPosition;
 
@@ -56,7 +58,7 @@ public class Projectile : MonoBehaviour
 		{
 			if(Explodes == true)
 			{
-				ExplosionManager.Instance.SpawnExplosion(transform.position, 1, 10, 3, 5);
+				Explosion();
 			}
 
 			TTL = 0;
@@ -90,7 +92,7 @@ public class Projectile : MonoBehaviour
 
 			if (Explodes == true)
 			{
-				ExplosionManager.Instance.SpawnExplosion(transform.position, 1, 10, 3, 5);
+				Explosion();
 			}
 
 			Debug.Log(hit.transform.name);
@@ -114,9 +116,14 @@ public class Projectile : MonoBehaviour
 
 		if (Explodes == true)
 		{
-			ExplosionManager.Instance.SpawnExplosion(transform.position, 1, 10, 3, 5);
+			Explosion();
 		}
 
 		gameObject.SetActive(false);
+	}
+
+	public virtual void Explosion()
+	{
+		ExplosionManager.Instance.SpawnExplosion(transform.position, Damage, 10, ExplosionMin, ExplosionMax);
 	}
 }

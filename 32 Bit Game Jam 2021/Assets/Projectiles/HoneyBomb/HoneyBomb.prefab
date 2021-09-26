@@ -4962,3 +4962,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Explodes: 1
+  ExplosionMin: 3
+  ExplosionMax: 5
