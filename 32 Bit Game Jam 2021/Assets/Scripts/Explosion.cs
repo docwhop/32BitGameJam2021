@@ -12,18 +12,20 @@ public class Explosion : MonoBehaviour
 	[SerializeField] float max;
     [SerializeField]
     private AudioSource source;
+    [SerializeField]
+    private AudioClip clip;
 
 	bool canDamage;
 
 	Collider col;
 
-	void Awake()
-	{
-		col = GetComponent<Collider>();
-        source.Play();
+    void Awake()
+    {
+        col = GetComponent<Collider>();
+        source.PlayOneShot(clip);
     }
 
-	public void Initialize(Vector3 pos, int dmg, float sped, float minSize, float maxSize)
+    public void Initialize(Vector3 pos, int dmg, float sped, float minSize, float maxSize)
 	{
 		damage = dmg;
 
@@ -36,7 +38,8 @@ public class Explosion : MonoBehaviour
 		transform.rotation = Quaternion.identity;
 		transform.localScale = new Vector3(min, min, min);
 
-		canDamage = true;
+
+        canDamage = true;
 	}
 
 	void Update()
