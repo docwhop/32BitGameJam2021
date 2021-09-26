@@ -59,7 +59,7 @@ public class GameUIPanel : MonoBehaviour
             weaponImage.sprite = pollenator;
         }
 
-        ammoText.text = weapon.MagazineSize + "/" + weapon.MagazineSize;
+        //ammoText.text = weapon.MagazineSize + "/" + weapon.MagazineSize;
 
     }
 }

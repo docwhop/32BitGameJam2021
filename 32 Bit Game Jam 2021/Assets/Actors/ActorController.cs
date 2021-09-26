@@ -14,6 +14,7 @@ public class ActorController : ScriptableObject
 
 	public virtual void Initialize(Actor _attachedActor)
 	{
+        Debug.Log("Initialzing actor");
 		AttachedActor = _attachedActor;
 
 		Animator = AttachedActor.GetComponent<Animator>();

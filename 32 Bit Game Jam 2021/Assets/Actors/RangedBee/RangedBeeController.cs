@@ -30,8 +30,10 @@ public class RangedBeeController : ActorController
 
 	public override void FixedUpdate()
 	{
+        Debug.Log("Checking can see");
 		if(CanSeePlayer() == true)
 		{
+            Debug.Log("Can See player: ");
 			newTargetTimer += Time.deltaTime;
 
 			attackTimer += Time.deltaTime;
