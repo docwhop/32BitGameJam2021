@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Gameplay Testbed.unity
     guid: 1297c75a38ba16c469a1e157016a1cd3
+  - enabled: 1
+    path: Assets/Scenes/LevelDesignOne.unity
+    guid: 4a5c11c79e13f734b8030905a5ce7401
   m_configObjects: {}

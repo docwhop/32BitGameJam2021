@@ -15,7 +15,10 @@ public class WeaponSwitcher : MonoBehaviour
 
     WeaponName currentWeapon;
 
-	void Update()
+    private void Start()
+    {
+    }
+    void Update()
 	{
 		SwitchInput();
 	}
