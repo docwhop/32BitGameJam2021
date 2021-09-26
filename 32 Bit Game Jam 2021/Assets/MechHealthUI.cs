@@ -24,8 +24,6 @@ public class MechHealthUI : MonoBehaviour
 				transform.GetChild(i).gameObject.SetActive(true);
 			}
 
-			Debug.Log((float)(MechHealth.HP / MechHealth.MaxHP));
-
 			HPBar.transform.localScale = new Vector3((float)MechHealth.HP / (float)MechHealth.MaxHP, 1, 1);		
 		}
 		else
