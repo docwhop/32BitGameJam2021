@@ -6139,7 +6139,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4550687712669905673, guid: e82d6136cabb3d64d9882280864251f5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 25.64
+      value: 27.817497
       objectReference: {fileID: 0}
     - target: {fileID: 4550687712669905673, guid: e82d6136cabb3d64d9882280864251f5, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6179,11 +6179,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4550687712669905678, guid: e82d6136cabb3d64d9882280864251f5, type: 3}
       propertyPath: hp
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4550687712669905678, guid: e82d6136cabb3d64d9882280864251f5, type: 3}
       propertyPath: maxHp
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4550687712669905678, guid: e82d6136cabb3d64d9882280864251f5, type: 3}
       propertyPath: OnDamage.m_PersistentCalls.m_Calls.Array.size

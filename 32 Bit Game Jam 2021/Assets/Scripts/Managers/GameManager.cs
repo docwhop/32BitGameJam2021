@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
 
     public int KeyCount { get; set; }
 
+    public int BulletsInClip { get; set; }
+
     [SerializeField]
     Transform introSpawnPoint, MainSpawnPoint, TeleportSpawnPoint;
     [SerializeField]
@@ -24,6 +26,16 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private AudioSource teleportSource;
 
+    private void OnEnable()
+    {
+        EventManager.weaponChangedEvent += WeaponChanged;
+    }
+
+    private void OnDisable()
+    {
+
+        EventManager.weaponChangedEvent -= WeaponChanged;
+    }
 
     private void Awake()
     {
@@ -57,6 +69,20 @@ public class GameManager : MonoBehaviour
             return TeleportSpawnPoint.position;
         }
         return Vector3.zero;
+    }
+
+    public void WeaponChanged(Weapon weapon)
+    {
+        if (weapon.WeaponName == WeaponName.NeedleGun)
+        {
+           
+        }
+        else if (weapon.WeaponName == WeaponName.HoneyLauncher)
+        {
+        }
+        else if (weapon.WeaponName == WeaponName.Pollenator)
+        {
+        }
     }
 
     // Start is called before the first frame update
