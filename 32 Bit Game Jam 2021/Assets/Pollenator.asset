@@ -17,7 +17,7 @@ MonoBehaviour:
   FireAudio: {fileID: 8300000, guid: 44b408cf278fb9943ae34a674f8e89e8, type: 3}
   FireRate: 0.5
   Accuracy: 25
-  ProjectileCount: 10
-  Range: 1
-  Damage: 3
+  ProjectileCount: 7
+  Range: 0.5
+  Damage: 1
   Speed: 50

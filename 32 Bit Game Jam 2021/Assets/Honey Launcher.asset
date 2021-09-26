@@ -19,5 +19,5 @@ MonoBehaviour:
   Accuracy: 0
   ProjectileCount: 1
   Range: 2
-  Damage: 10
+  Damage: 3
   Speed: 30
