@@ -105,11 +105,11 @@ public class Projectile : MonoBehaviour
 		ignored = _col;
 	}
 
-	public virtual void OnTriggerEnter(Collider other)
+	public virtual void OnCollisionEnter(Collision collision)
 	{
-		if (other.gameObject.GetComponent<Health>())
+		if (collision.gameObject.GetComponent<Health>())
 		{
-			other.gameObject.GetComponent<Health>().Damage(Damage);
+			collision.gameObject.GetComponent<Health>().Damage(Damage);
 		}
 
 		if (Explodes == true)

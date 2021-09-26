@@ -37,4 +37,9 @@ public class GravityProjectile : Projectile
 			gameObject.SetActive(false);
 		}
 	}
+
+	public override void OnCollisionEnter(Collision collision)
+	{
+
+	}
 }
