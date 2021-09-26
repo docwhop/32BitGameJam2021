@@ -17,8 +17,10 @@ public class WeaponSwitcher : MonoBehaviour
 
     private void Start()
     {
-    }
-    void Update()
+		weaponHandler.NextWeapon();
+		weaponHandler.PreviousWeapon();
+	}
+	void Update()
 	{
 		SwitchInput();
 	}
@@ -49,8 +51,6 @@ public class WeaponSwitcher : MonoBehaviour
 		{
 			weaponHandler.Reload();
 		}
-
-		//SwapWeaponModel();
 	}
 
 	private void OnEnable()
@@ -64,7 +64,7 @@ public class WeaponSwitcher : MonoBehaviour
     
     public void SwapWeaponModel(Weapon weapon)
     {
-        Debug.Log("SwapWeaponModel called.");
+        //Debug.Log("SwapWeaponModel called.");
         if(currentWeapon != weaponHandler.GetPrimary().WeaponName)
         {
             switch (weaponHandler.GetPrimary().WeaponName)
@@ -89,7 +89,7 @@ public class WeaponSwitcher : MonoBehaviour
 
     IEnumerator ReloadNeedler()
     {
-        Debug.Log("SwitchNeedler called.");
+        //Debug.Log("SwitchNeedler called.");
         armsParent.SetTrigger("SwitchWeapon");
         yield return new WaitForSeconds(.5f);
         needleGun.SetActive(true);
@@ -102,7 +102,7 @@ public class WeaponSwitcher : MonoBehaviour
     }
     IEnumerator ReloadHoneyLauncher()
     {
-        Debug.Log("SwitchHoneyLancher called.");
+        //Debug.Log("SwitchHoneyLancher called.");
         armsParent.SetTrigger("SwitchWeapon");
         yield return new WaitForSeconds(.5f);
         honeyLauncher.SetActive(true);
@@ -115,7 +115,7 @@ public class WeaponSwitcher : MonoBehaviour
     }
     IEnumerator ReloadPollenator()
     {
-        Debug.Log("SwitchPollenator called.");
+        //Debug.Log("SwitchPollenator called.");
         armsParent.SetTrigger("SwitchWeapon");
         yield return new WaitForSeconds(.5f);
         pollenator.SetActive(true);
