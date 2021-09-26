@@ -11,6 +11,7 @@ TagManager:
   - IntroHoneyLava
   - MainHoneyLava
   - MovingPlatform
+  - Teleport Platform
   layers:
   - Default
   - TransparentFX
