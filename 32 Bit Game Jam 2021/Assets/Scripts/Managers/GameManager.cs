@@ -18,7 +18,11 @@ public class GameManager : MonoBehaviour
     public int KeyCount { get; set; }
 
     [SerializeField]
-    Transform introSpawnPoint, MainSpawnPoint;
+    Transform introSpawnPoint, MainSpawnPoint, TeleportSpawnPoint;
+    [SerializeField]
+    private AudioSource splashSource;
+    [SerializeField]
+    private AudioSource teleportSource;
 
 
     private void Awake()
@@ -39,11 +43,18 @@ public class GameManager : MonoBehaviour
         Debug.Log("hit: " + hit.gameObject.tag);
         if (hit.gameObject.tag == "IntroHoneyLava")
         {
+            splashSource.Play();
             return introSpawnPoint.position;
         }
         else if (hit.gameObject.tag == "MainHoneyLava")
         {
+            splashSource.Play();
             return MainSpawnPoint.position;
+        }
+        else if (hit.gameObject.tag == "Teleport Platform")
+        {
+            teleportSource.Play();
+            return TeleportSpawnPoint.position;
         }
         return Vector3.zero;
     }

@@ -129,7 +129,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        if (hit.gameObject.tag == "IntroHoneyLava" || hit.gameObject.tag == "MainHoneyLava")
+        if (hit.gameObject.tag == "IntroHoneyLava" || hit.gameObject.tag == "MainHoneyLava" || hit.gameObject.tag == "Teleport Platform")
         {
             Vector3 spawnPoint = GameManager.Instance.GetSpawnpoint(hit);
             transform.position = new Vector3(spawnPoint.x, spawnPoint.y, spawnPoint.z);
