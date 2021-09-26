@@ -141,10 +141,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33ac0fd7d0f7d6a43bd09d2ccd5c1cd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
-  speed: 0
-  min: 0
-  max: 0
+  damage: 25
+  speed: 1
+  min: 1
+  max: 1
   source: {fileID: 271904892663821549}
   clip: {fileID: 8300000, guid: 493dc6bd3bbd7ac4ca74515498e02949, type: 3}
 --- !u!82 &271904892663821549
