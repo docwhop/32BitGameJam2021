@@ -14,10 +14,10 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
-  m_Fog: 0
-  m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  m_Fog: 1
+  m_FogColor: {r: 1, g: 0.44054058, b: 0, a: 1}
   m_FogMode: 3
-  m_FogDensity: 0.01
+  m_FogDensity: 0.001
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
@@ -25132,15 +25132,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4550687712669905673, guid: e82d6136cabb3d64d9882280864251f5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -47.5
+      value: -85.25
       objectReference: {fileID: 0}
     - target: {fileID: 4550687712669905673, guid: e82d6136cabb3d64d9882280864251f5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 36
+      value: 63.75
       objectReference: {fileID: 0}
     - target: {fileID: 4550687712669905673, guid: e82d6136cabb3d64d9882280864251f5, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -146.75
+      value: 455
       objectReference: {fileID: 0}
     - target: {fileID: 4550687712669905673, guid: e82d6136cabb3d64d9882280864251f5, type: 3}
       propertyPath: m_LocalRotation.w
@@ -28970,6 +28970,14 @@ PrefabInstance:
     - target: {fileID: 5931370283155834925, guid: 7786f90cc7f2d4e49acb283cc128eccb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6420907612933427861, guid: 7786f90cc7f2d4e49acb283cc128eccb, type: 3}
+      propertyPath: hp
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6420907612933427861, guid: 7786f90cc7f2d4e49acb283cc128eccb, type: 3}
+      propertyPath: maxHp
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6420907612933427863, guid: 7786f90cc7f2d4e49acb283cc128eccb, type: 3}
       propertyPath: m_Name
@@ -52263,6 +52271,10 @@ PrefabInstance:
       propertyPath: Health
       value: 
       objectReference: {fileID: 138045632}
+    - target: {fileID: 8139455078850626799, guid: bed6865def4213e409e49555812a0f81, type: 3}
+      propertyPath: EmptyHP
+      value: 
+      objectReference: {fileID: 21300000, guid: 4f40c4a300e9f344f95e575f0294c117, type: 3}
     - target: {fileID: 8139455079036016926, guid: bed6865def4213e409e49555812a0f81, type: 3}
       propertyPath: m_SizeDelta.x
       value: 75
