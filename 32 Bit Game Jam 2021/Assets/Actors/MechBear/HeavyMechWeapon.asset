@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WeaponName: 3
   MagazineSize: 0
-  FireAudio: {fileID: 8300000, guid: 657a0f3aa73a0e549b1ed4e8ce2ae879, type: 3}
+  FireAudio: {fileID: 8300000, guid: 008f7ff048560d9488c8cd76cfa0be5e, type: 3}
   FireRate: 1
   Accuracy: 0
   ProjectileCount: 1
