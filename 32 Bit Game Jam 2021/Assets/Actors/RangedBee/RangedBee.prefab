@@ -5190,6 +5190,7 @@ MonoBehaviour:
   GunEnds:
   - {fileID: 3238251521006736146}
   - {fileID: 320297964033569288}
+  Bleed: {fileID: 3567795080112239468, guid: 4ec1352028828ac429d733e2af0ee583, type: 3}
 --- !u!114 &6420907612933427862
 MonoBehaviour:
   m_ObjectHideFlags: 0

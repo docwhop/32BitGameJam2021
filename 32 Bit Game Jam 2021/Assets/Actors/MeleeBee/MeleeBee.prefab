@@ -7030,6 +7030,7 @@ MonoBehaviour:
   Data: {fileID: 11400000, guid: e459333c57ffcd645a27cc9abb001338, type: 2}
   Controller: {fileID: 11400000, guid: 12d705f4209f96540ae3e347c530157d, type: 2}
   GunEnds: []
+  Bleed: {fileID: 3567795080112239468, guid: 4ec1352028828ac429d733e2af0ee583, type: 3}
 --- !u!114 &8348893579365095995
 MonoBehaviour:
   m_ObjectHideFlags: 0

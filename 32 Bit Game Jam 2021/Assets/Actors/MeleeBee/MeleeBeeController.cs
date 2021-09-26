@@ -35,6 +35,8 @@ public class MeleeBeeController : ActorController
 			}
 			else if (Vector3.Distance(AttachedActor.transform.position, PlayerPosition()) <= ChargeRange) //Charge
 			{
+				Animator.SetInteger("MoveState", 1);
+
 				direction = GetDirection(PlayerPosition() + Vector3.down * 2.2f);
 			}
 			else //Hover

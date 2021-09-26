@@ -20,6 +20,8 @@ public class Actor : MonoBehaviour
 
     public bool IsDead { get; set; }
 
+	public GameObject Bleed;
+
 	void Awake()
     {
 		Health = GetComponent<Health>();
@@ -63,12 +65,11 @@ public class Actor : MonoBehaviour
 
 	void OnDamage()
 	{
-		//When shot calls this method
+		Instantiate(Bleed, Collider.bounds.center, Quaternion.identity);
 	}
 
 	void OnDeath()
 	{
-        //When killed calls this method
         Controller.DeathEvent();
         IsDead = true;
 		//gameObject.SetActive(false); 
