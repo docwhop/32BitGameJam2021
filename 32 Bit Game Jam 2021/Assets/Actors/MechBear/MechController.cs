@@ -76,6 +76,7 @@ public class MechController : ActorController
 			AttachedActor.gameObject.layer = LayerMask.NameToLayer("DeadEnemy");
 
 			AttachedActor.Rbody.velocity = Vector3.zero;
+			AttachedActor.Rbody.angularVelocity = Vector3.zero;
 			AttachedActor.Rbody.freezeRotation = true;
 
 			//Improves performance
@@ -95,6 +96,6 @@ public class MechController : ActorController
 
 	public override void HeavyAttackEvent()
 	{
-		AttachedActor.WeaponHandler.FireSelected(2, AttachedActor.GunEnds[2].position, -AttachedActor.GunEnds[2].right + Vector3.down * 0.1f, AttachedActor.Collider);
+		AttachedActor.WeaponHandler.FireSelected(2, AttachedActor.GunEnds[2].position, -AttachedActor.GunEnds[2].right + Vector3.down * 0.07f, AttachedActor.Collider);
 	}
 }

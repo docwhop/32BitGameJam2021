@@ -50,7 +50,10 @@ public class Actor : MonoBehaviour
 
 	void Update()
 	{
-		Controller.Update();	
+		Rbody.velocity = Vector3.zero;
+		Rbody.angularVelocity = Vector3.zero;
+
+		Controller.Update();
 	}
 
 	void FixedUpdate()

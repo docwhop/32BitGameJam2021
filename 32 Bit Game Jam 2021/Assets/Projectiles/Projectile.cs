@@ -18,6 +18,15 @@ public class Projectile : MonoBehaviour
 
 	Vector3 previousPosition;
 
+	Collider col;
+
+	Collider ignored;
+
+	public virtual void Awake()
+	{
+		col = GetComponent<Collider>();	
+	}
+
 	public virtual void Initialize(Vector3 _position, Vector3 _direction, float _speed, float _range, int _damage)
 	{
 		transform.position = _position;
@@ -28,13 +37,15 @@ public class Projectile : MonoBehaviour
 
 		transform.forward = Direction;
 
-		//Bad but resets IgnoreCollider values
-		GetComponent<Collider>().enabled = false;
-		GetComponent<Collider>().enabled = true;
-
 		TTL = 0;
 
 		previousPosition = transform.position;
+
+		if(ignored != null && col != null)
+		{
+			Physics.IgnoreCollision(col, ignored, false);
+			ignored = null;
+		}
 	}
 
 	public virtual void Update()
@@ -88,9 +99,10 @@ public class Projectile : MonoBehaviour
 		}
 	}
 
-	public void IgnoreCollider(Collider col)
+	public void IgnoreCollider(Collider _col)
 	{
-		Physics.IgnoreCollision(GetComponent<Collider>(), col, true);
+		Physics.IgnoreCollision(col, _col, true);
+		ignored = _col;
 	}
 
 	public virtual void OnTriggerEnter(Collider other)

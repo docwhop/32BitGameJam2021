@@ -23,13 +23,13 @@ public class FirstPersonShoot : MonoBehaviour
         //EventManager.weaponChangedEvent -= AssignFirePoints;
     }
 
-    private void Awake()
+    void Awake()
 	{
 		cam = GetComponentInChildren<Camera>();
 
 		weaponHandler = GetComponent<WeaponHandler>();
 
-		col = GetComponent<Collider>();
+		col = GetComponent<CharacterController>();
 	}
 
 	void Update()

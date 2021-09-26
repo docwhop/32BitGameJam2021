@@ -125,6 +125,7 @@ public class RangedBeeController : ActorController
 			AttachedActor.gameObject.layer = LayerMask.NameToLayer("DeadEnemy");
 
 			AttachedActor.Rbody.velocity = Vector3.zero;
+			AttachedActor.Rbody.angularVelocity = Vector3.zero;
 			AttachedActor.Rbody.freezeRotation = true;
 			AttachedActor.Rbody.AddForce(Vector3.down * 10, ForceMode.Impulse);
 

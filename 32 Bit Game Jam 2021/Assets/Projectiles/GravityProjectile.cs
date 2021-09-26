@@ -6,8 +6,10 @@ public class GravityProjectile : Projectile
 {
 	Rigidbody rbody;
 
-	void Awake()
+	public override void Awake()
 	{
+		base.Awake();
+
 		rbody = GetComponent<Rigidbody>();
 	}
 
