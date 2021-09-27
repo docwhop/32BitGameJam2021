@@ -54248,6 +54248,18 @@ PrefabInstance:
       propertyPath: MechHealth
       value: 
       objectReference: {fileID: 284702342}
+    - target: {fileID: 8139455078850626576, guid: bed6865def4213e409e49555812a0f81, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 90.7477
+      objectReference: {fileID: 0}
+    - target: {fileID: 8139455078850626576, guid: bed6865def4213e409e49555812a0f81, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -528
+      objectReference: {fileID: 0}
+    - target: {fileID: 8139455078850626576, guid: bed6865def4213e409e49555812a0f81, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 629.08
+      objectReference: {fileID: 0}
     - target: {fileID: 8139455078850626799, guid: bed6865def4213e409e49555812a0f81, type: 3}
       propertyPath: Health
       value: 
