@@ -23,7 +23,8 @@ public class PlayerMovement : MonoBehaviour
     private AudioClip[] hoverClips;
     public bool alreadyPlayed = false;
     private float fadeTime = 1f;
-
+    [SerializeField]
+    Transform spawnPointIntro, spawnPointMain;
     CharacterController controller;
 
 	Vector3 velocity;
@@ -129,9 +130,17 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        if (hit.gameObject.tag == "IntroHoneyLava" || hit.gameObject.tag == "MainHoneyLava" || hit.gameObject.tag == "Teleport Platform")
+        if( hit.gameObject.tag == "Teleport Platform")
         {
             Vector3 spawnPoint = GameManager.Instance.GetSpawnpoint(hit);
+            transform.position = new Vector3(spawnPoint.x, spawnPoint.y, spawnPoint.z);
+        }
+        if (hit.gameObject.tag == "IntroHoneyLava"){
+            Vector3 spawnPoint = spawnPointIntro.position;
+            transform.position = new Vector3(spawnPoint.x, spawnPoint.y, spawnPoint.z);
+        }
+        if (hit.gameObject.tag == "MainHoneyLava" ){
+            Vector3 spawnPoint = spawnPointMain.position;
             transform.position = new Vector3(spawnPoint.x, spawnPoint.y, spawnPoint.z);
         }
     }
