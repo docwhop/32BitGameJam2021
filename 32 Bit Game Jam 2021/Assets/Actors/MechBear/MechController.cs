@@ -9,6 +9,8 @@ public class MechController : ActorController
 
 	bool lightAttacking;
 
+	public GameObject Shockwave;
+
 	public override void Initialize(Actor _attachedActor)
 	{
 		base.Initialize(_attachedActor);
@@ -87,6 +89,8 @@ public class MechController : ActorController
 	public override void AttackEvent()
 	{
 		AttachedActor.WeaponHandler.FireSelected(0, AttachedActor.GunEnds[0].position, Vector3.zero, AttachedActor.Collider);
+
+		Instantiate(Shockwave, AttachedActor.Collider.bounds.center, Quaternion.identity);
 	}
 
 	public override void LightAttackEvent()
