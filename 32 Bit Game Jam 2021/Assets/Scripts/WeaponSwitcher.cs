@@ -17,8 +17,8 @@ public class WeaponSwitcher : MonoBehaviour
 
     private void Start()
     {
-		weaponHandler.NextWeapon();
-		weaponHandler.PreviousWeapon();
+		//weaponHandler.NextWeapon();
+		//weaponHandler.PreviousWeapon();
 	}
 	void Update()
 	{
@@ -61,7 +61,13 @@ public class WeaponSwitcher : MonoBehaviour
     {
         EventManager.weaponChangedEvent -= SwapWeaponModel;
     }
-    
+
+
+    public void StartingWeapon() {
+        currentWeapon = WeaponName.NeedleGun;
+    }
+
+
     public void SwapWeaponModel(Weapon weapon)
     {
         //Debug.Log("SwapWeaponModel called.");
