@@ -110,8 +110,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PositionAmount: {x: 0, y: 0, z: 0}
-  RotationAmount: {x: 0, y: 150, z: 0}
-  ScaleAmount: {x: 0, y: 0, z: 0}
+  RotationAmount: {x: 0, y: 2, z: 0}
 --- !u!114 &875130261276965141
 MonoBehaviour:
   m_ObjectHideFlags: 0
