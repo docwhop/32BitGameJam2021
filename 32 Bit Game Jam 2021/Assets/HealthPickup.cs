@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class HealthPickup : MonoBehaviour
 {
+    [SerializeField]
+    private AudioSource healthSource;
 	void OnTriggerEnter(Collider other)
 	{
 		if(other.gameObject.layer == LayerMask.NameToLayer("Player"))
@@ -13,6 +15,7 @@ public class HealthPickup : MonoBehaviour
 			if(health.HP < health.MaxHP)
 			{
 				other.GetComponent<Health>().Heal(1);
+                healthSource.Play();
 				Destroy(gameObject);
 			}
 		}

@@ -29,7 +29,7 @@ public class DoorController : MonoBehaviour
         //collected all the keys and open the door
         if(GameManager.Instance.KeyCount == keys.Length)
         {
-            animator.SetBool("isOpen", true);
+			gameObject.SetActive(false);
         }
     }
 }

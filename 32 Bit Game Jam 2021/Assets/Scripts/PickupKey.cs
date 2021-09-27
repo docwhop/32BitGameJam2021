@@ -18,5 +18,7 @@ public class PickupKey : MonoBehaviour
             source.PlayOneShot(clip);
             Destroy(hit.gameObject);
         }
+
+		hit.transform.GetComponent<Health>().FullHP();
     }
 }
