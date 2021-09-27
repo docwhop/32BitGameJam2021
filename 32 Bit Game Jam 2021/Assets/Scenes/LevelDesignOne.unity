@@ -54246,7 +54246,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7487468059472448544, guid: bed6865def4213e409e49555812a0f81, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 300
+      value: 360
       objectReference: {fileID: 0}
     - target: {fileID: 7487468059472448547, guid: bed6865def4213e409e49555812a0f81, type: 3}
       propertyPath: MechHealth
@@ -54258,11 +54258,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8139455078850626576, guid: bed6865def4213e409e49555812a0f81, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -500
+      value: -515
       objectReference: {fileID: 0}
     - target: {fileID: 8139455078850626576, guid: bed6865def4213e409e49555812a0f81, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 420
+      value: 475
       objectReference: {fileID: 0}
     - target: {fileID: 8139455078850626799, guid: bed6865def4213e409e49555812a0f81, type: 3}
       propertyPath: Health
