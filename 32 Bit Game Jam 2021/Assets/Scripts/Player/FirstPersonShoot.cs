@@ -38,6 +38,7 @@ public class FirstPersonShoot : MonoBehaviour
         {
 			if(weaponHandler.FirePrimary(FirePoints[firePointIndex].position, ProjectileDirection(), col) == true)
 			{
+                EventManager.Instance.WeaponFired();
 				firePointIndex++;
 
 				if (firePointIndex >= FirePoints.Length)

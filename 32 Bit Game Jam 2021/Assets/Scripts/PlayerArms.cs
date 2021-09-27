@@ -9,11 +9,13 @@ public class PlayerArms : MonoBehaviour
     private void OnEnable()
     {
         EventManager.weaponReloadedEvent += ReloadWeapon;
+        EventManager.weaponFiredEvent += FireWeapon;
     }
 
     private void OnDisable()
     {
         EventManager.weaponReloadedEvent -= ReloadWeapon;
+        EventManager.weaponFiredEvent += FireWeapon;
     }
     // Start is called before the first frame update
     void Start()
@@ -22,8 +24,28 @@ public class PlayerArms : MonoBehaviour
     }
 
 
-    public void ReloadWeapon()
+    public void ReloadWeapon(Weapon weapon)
     {
-        animator.SetTrigger("Reload");
+
+        switch (weapon.WeaponName)
+        {
+            case WeaponName.NeedleGun:
+                animator.SetTrigger("ReloadBeeBuster");
+                break;
+            case WeaponName.HoneyLauncher:
+                animator.SetTrigger("ReloadHoneyLauncher");
+                break;
+            case WeaponName.Pollenator:
+                animator.SetTrigger("ReloadPollenizer");
+                break;
+            default:
+                break;
+        }
+       
+    }
+
+    public void FireWeapon()
+    {
+        animator.SetTrigger("Recoil");
     }
 }

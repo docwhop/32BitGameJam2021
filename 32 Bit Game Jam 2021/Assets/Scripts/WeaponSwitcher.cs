@@ -96,7 +96,7 @@ public class WeaponSwitcher : MonoBehaviour
         honeyLauncher.SetActive(false);
         pollenator.SetActive(false);
         needleGun.transform.parent = rightArm.transform;
-        needleGun.transform.localRotation = Quaternion.Euler(0, 90, 0);
+        needleGun.transform.localRotation = Quaternion.Euler(0, 90, 180);
         needleGun.transform.localPosition = Vector3.zero;
     
     }
@@ -109,7 +109,7 @@ public class WeaponSwitcher : MonoBehaviour
         needleGun.SetActive(false);
         pollenator.SetActive(false);
         honeyLauncher.transform.parent = rightArm.transform;
-        honeyLauncher.transform.localRotation = Quaternion.Euler(0, 90, 0);
+        honeyLauncher.transform.localRotation = Quaternion.Euler(0, 90, 180);
         honeyLauncher.transform.localPosition = Vector3.zero;
     
     }
@@ -122,7 +122,7 @@ public class WeaponSwitcher : MonoBehaviour
         needleGun.SetActive(false);
         honeyLauncher.SetActive(false);
         pollenator.transform.parent = rightArm.transform;
-        pollenator.transform.localRotation = Quaternion.Euler(0, 90, 0);
+        pollenator.transform.localRotation = Quaternion.Euler(0, 90, 180);
         pollenator.transform.localPosition = Vector3.zero;
       
     }

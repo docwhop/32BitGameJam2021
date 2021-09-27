@@ -29,7 +29,7 @@ public class WeaponHandler : MonoBehaviour
 
     public void Reload()
     {
-		EventManager.Instance.WeaponReloaded();
+		EventManager.Instance.WeaponReloaded(Weapons[selectedIndex]);
         reload.Play();
 	}
 
