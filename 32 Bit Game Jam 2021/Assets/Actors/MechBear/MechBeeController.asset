@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: MechBeeController
   m_EditorClassIdentifier: 
   Player: {fileID: 0}
-  SightRange: 100
+  SightRange: 80
   Shockwave: {fileID: 4835440546399261346, guid: f53e6fdcda2965842aae8cafdbfe9b35, type: 3}
