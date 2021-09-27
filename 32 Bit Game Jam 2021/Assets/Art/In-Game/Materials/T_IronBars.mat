@@ -9,7 +9,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: T_IronBars
   m_Shader: {fileID: 4800000, guid: 94cb0d6305cd4a743b1d2ec684e277de, type: 3}
-  m_ShaderKeywords: DIFF_VERTEX OPAQUE SPEC_GOURAUD _DIFFMODEL_VERTEX _DRAWDIST_ON
+  m_ShaderKeywords: CUTOUT DIFF_VERTEX SPEC_GOURAUD _DIFFMODEL_VERTEX _DRAWDIST_ON
     _EMISSION _SPECMODEL_GOURAUD
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
@@ -56,14 +56,14 @@ Material:
     m_Floats:
     - _BlendOp: 0
     - _Cul: 0
-    - _CutoutThreshold: 0.5
+    - _CutoutThreshold: 0.98
     - _DiffModel: 0
     - _DrawDist: 1
     - _DstBlend: 0
     - _LODAmt: 0
     - _Metallic: 0
     - _NormalMapDepth: 1
-    - _RenderMode: 0
+    - _RenderMode: 2
     - _Smoothness: 0.5
     - _SpecModel: 0
     - _Specular: 0
