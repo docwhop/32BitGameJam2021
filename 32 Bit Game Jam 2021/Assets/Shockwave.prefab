@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46e7a4e84967acd41929c724081cdf3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TTL: 0.6
+  TTL: 0.5
 --- !u!114 &5754340692024045566
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -111,7 +111,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PositionAmount: {x: 0, y: 0, z: 0}
   RotationAmount: {x: 0, y: 0, z: 0}
-  ScaleAmount: {x: 5, y: 5, z: 5}
+  ScaleAmount: {x: 7, y: 7, z: 7}
 --- !u!1 &4835440547137433012
 GameObject:
   m_ObjectHideFlags: 0

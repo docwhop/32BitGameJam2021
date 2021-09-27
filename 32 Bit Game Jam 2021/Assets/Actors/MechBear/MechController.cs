@@ -15,8 +15,6 @@ public class MechController : ActorController
 	{
 		base.Initialize(_attachedActor);
 
-		direction = AttachedActor.transform.forward;
-
 		lightAttacking = false;
 	}
 
@@ -43,7 +41,7 @@ public class MechController : ActorController
 				if (angle <= 25 && angle >= -25)
 				{
 					//Front
-					if (Vector3.Distance(PlayerPosition(), AttachedActor.transform.position) <= 50)
+					if (Vector3.Distance(PlayerPosition(), AttachedActor.transform.position) <= 60)
 					{
 						Animator.SetTrigger("LightAttack");
 					}
@@ -90,7 +88,7 @@ public class MechController : ActorController
 	{
 		AttachedActor.WeaponHandler.FireSelected(0, AttachedActor.GunEnds[0].position, Vector3.zero, AttachedActor.Collider);
 
-		Instantiate(Shockwave, AttachedActor.Collider.bounds.center, Quaternion.identity);
+		Instantiate(Shockwave, AttachedActor.Collider.bounds.center + Vector3.down * 5, Quaternion.identity);
 	}
 
 	public override void LightAttackEvent()
